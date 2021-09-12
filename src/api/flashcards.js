@@ -1,5 +1,6 @@
 import axios from 'axios';
 
-export default axios.create({
+export const connect = axios.create({
     baseURL: 'http://localhost:3010'
 })
+

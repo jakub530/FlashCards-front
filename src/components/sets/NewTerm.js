@@ -1,12 +1,13 @@
 import React from 'react';
 import { addTerm} from '../../actions';
 import { connect } from 'react-redux';
+import { setActions } from '../../actions';
 
-class NewTerm extends React.Component {
+class TermCreate extends React.Component {
   
   onSubmit = test => {
     console.log(test)
-    this.props.addTerm(test);
+    this.props.createTerm(test);
   }
     
   render (){
@@ -22,4 +23,4 @@ class NewTerm extends React.Component {
 
 
 
-export default connect(null, { addTerm })(NewTerm);
+export default connect(null, { setActions.createTerm })(NewTerm);

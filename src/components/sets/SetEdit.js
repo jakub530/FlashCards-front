@@ -1,17 +1,15 @@
 import React from 'react';
 import _ from 'lodash';
-import AddTerm from './AddTerm'
+import TermCard from './TermCard'
 import NewTerm from './NewTerm';
 import Header from './Header';
 import { Form, Field } from "react-final-form";
-import { fetchTerms, addTerm} from '../../actions';
 import { connect } from 'react-redux';
+import { setActions } from '../../actions';
 
-
-
-class CreateSet extends React.Component {
+class SetEdit extends React.Component {
   componentDidMount() {
-    this.props.fetchTerms();
+    this.props.dispatch(setActions.fetchSet(this.props.match.params.id));
   }
 
   onSubmit = (formValues) => {
@@ -26,21 +24,50 @@ class CreateSet extends React.Component {
 
 
   renderTerms() {
-    return this.props.terms.terms.map((term,index) => {
+    console.log("SetEdit props:" ,this.props)
+    if(this.props.cards)
+    {
+      return this.props.cards.map(({_id,term,definition}) => {
+        return (
+          <TermCard id={_id} key={_id} index={_id} term={term} definition={definition}></TermCard>
+        );
+      })
+    }
+    else
+    {
       return (
-        <AddTerm id={term.id} index={index} key={term.id}></AddTerm>
+        <div>Waiting for cards</div>
       );
-    })
+    }
+
   }
 
   componentDidUpdate() {
     console.log(this.props)
   }
+
+  readInitialState() {
+    if(this.props.cards)
+    {
+      const cards = {}
+      this.props.cards.forEach(elem => {
+        cards[elem._id] = {
+          description:"",
+          term:elem.term,
+          definition:elem.definition
+
+        }
+      })
+      return {cards:cards};
+    }
+  }
   
   render (){
     return (
       <div>
-        <Form onSubmit={this.onSubmit} 
+        <Form
+        initialValues={this.readInitialState()} 
+        onSubmit={this.onSubmit} 
         render={({handleSubmit, form, submitting, pristine, values}) => (
         <form onSubmit={handleSubmit}>
           <Header></Header>
@@ -60,8 +87,8 @@ class CreateSet extends React.Component {
 
 const mapStateToProps = (state) => {
   return { 
-      terms: state.terms,
+      cards: state.set.cards,
   }
 }
 
-export default connect(mapStateToProps, {fetchTerms})(CreateSet);
+export default connect(mapStateToProps)(SetEdit);

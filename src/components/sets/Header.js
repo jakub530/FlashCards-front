@@ -1,12 +1,7 @@
 import React from 'react';
 import { Field } from 'react-final-form';
 
-{/* <Field 
-name={`term-${this.props.id}`} 
-component="input" type="text" 
-className="form-control"  
-placeholder="Term" 
-/> */}
+
 
 class Header extends React.Component {
     
@@ -20,11 +15,11 @@ class Header extends React.Component {
           <div className="card-body text-white bg-dark">
             <div className="mb-3">
               <label  className="form-label">Title</label>
-              <Field component="input" name="title" type="email" className="form-control" id="exampleFormControlInput1"/>
+              <Field component="input" name="set.title" type="email" className="form-control" id="exampleFormControlInput1"/>
             </div>
             <div className="mb-3">
               <label  className="form-label">Description</label>
-              <Field component="textarea" name="description" className="form-control" id="exampleFormControlTextarea1" rows="3"/>
+              <Field component="textarea" name="set.description" className="form-control" id="exampleFormControlTextarea1" rows="3"/>
             </div>
           </div>
         </div>

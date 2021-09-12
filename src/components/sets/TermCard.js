@@ -3,7 +3,7 @@ import { Field } from 'react-final-form';
 import { deleteTerm} from '../../actions';
 import { connect } from 'react-redux';
 
-class AddTerm extends React.Component {
+class TermCard extends React.Component {
 
   deleteEntry = () => {
     console.log(this.props.id)
@@ -31,7 +31,7 @@ class AddTerm extends React.Component {
             <div className="row">
               <div className="col">
                 <Field 
-                  name={`terms.${this.props.index}.term`} 
+                  name={`cards.${this.props.index}.term`} 
                   component="input" type="text" 
                   className="form-control"  
                   placeholder="Term" 
@@ -39,7 +39,7 @@ class AddTerm extends React.Component {
               </div>
               <div className="col">
                 <Field 
-                  name={`description-${this.props.id}`} 
+                  name={`cards.${this.props.id}.definition`} 
                   component="input" 
                   type="text" 
                   className="form-control" 
@@ -54,4 +54,4 @@ class AddTerm extends React.Component {
 };
 
 // export default AddTerm;
-export default connect(null, { deleteTerm })(AddTerm);
+export default connect(null, { deleteTerm })(TermCard);

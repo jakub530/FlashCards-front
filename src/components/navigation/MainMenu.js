@@ -3,8 +3,14 @@ import {Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { testApi} from '../../actions';
 
+import { userActions } from '../../actions';
 
 class MainMenu extends React.Component {
+  componentDidMount() 
+  {
+    this.props.dispatch(userActions.getAll());
+  }
+
   onClick = () => {
     console.log(this.props)
     this.props.testApi()
@@ -15,8 +21,7 @@ class MainMenu extends React.Component {
       <div className="mt-5">
         <div className="d-grid gap-2 col-6 mx-auto">
           <Link className="btn btn-primary" type="button" to="/sessions/session">Learning Sessions</Link>
-          <Link className="btn btn-primary" type="button" to="/sets/create">Learning Sets</Link>
-          <Link onClick={this.onClick} className="btn btn-primary" type="button" to="/">Settings</Link>
+          <Link className="btn btn-primary" type="button" to="/sets">Learning Sets</Link>
         </div>
       </div>
     ); 
@@ -29,4 +34,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { testApi })(MainMenu);
+export default connect(mapStateToProps)(MainMenu);
