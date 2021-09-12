@@ -9,8 +9,6 @@ export const set = (state = init_state, action) => {
     case setConstants.FETCH_SET:
       console.log("Reached fetch action")
       return action.payload
-    // case setConstants.CREATE_TERM:
-    //     return 
     default:
       return state;
   }

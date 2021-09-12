@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import TermCard from './TermCard'
-import NewTerm from './NewTerm';
+// import NewTerm from './NewTerm';
 import Header from './Header';
 import { Form, Field } from "react-final-form";
 import { connect } from 'react-redux';
@@ -10,6 +10,26 @@ import { setActions } from '../../actions';
 class SetEdit extends React.Component {
   componentDidMount() {
     this.props.dispatch(setActions.fetchSet(this.props.match.params.id));
+
+  }
+
+
+  componentDidUpdate() {
+    console.log(this.props)
+    if(this.props.cards)
+    {
+      console.log("Updating component")
+      if(!this.state.init)
+      {
+        this.setState({cards:this.props.cards, init:true})
+        console.log("SetEdit state", this.state)
+      }
+    }
+
+  }
+  constructor(props){
+    super(props);
+    this.state = { cards:[], set:{}, init:false};
   }
 
   onSubmit = (formValues) => {
@@ -25,8 +45,11 @@ class SetEdit extends React.Component {
 
   renderTerms() {
     console.log("SetEdit props:" ,this.props)
+
     if(this.props.cards)
     {
+
+
       return this.props.cards.map(({_id,term,definition}) => {
         return (
           <TermCard id={_id} key={_id} index={_id} term={term} definition={definition}></TermCard>
@@ -42,9 +65,6 @@ class SetEdit extends React.Component {
 
   }
 
-  componentDidUpdate() {
-    console.log(this.props)
-  }
 
   readInitialState() {
     if(this.props.cards)
@@ -72,7 +92,7 @@ class SetEdit extends React.Component {
         <form onSubmit={handleSubmit}>
           <Header></Header>
           {this.renderTerms()}
-          <NewTerm></NewTerm>
+          {/* <NewTerm></NewTerm> */}
           <div>
             <button className="float-end btn btn-primary btn-success" type="submit">Save</button>
           </div>

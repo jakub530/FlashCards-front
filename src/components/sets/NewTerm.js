@@ -23,4 +23,4 @@ class TermCreate extends React.Component {
 
 
 
-export default connect(null, { setActions.createTerm })(NewTerm);
+export default connect(null, { })(NewTerm)
