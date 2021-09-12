@@ -4,55 +4,54 @@ import TermCard from './TermCard'
 // import NewTerm from './NewTerm';
 import Header from './Header';
 import { Form, Field } from "react-final-form";
-import { connect } from 'react-redux';
-import { setActions } from '../../actions';
+import { setService } from '../../services';
+import Button from 'react-bootstrap/Button';
+import { FormSpy } from 'react-final-form'
+
+
 
 class SetEdit extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(setActions.fetchSet(this.props.match.params.id));
-
-  }
-
-
-  componentDidUpdate() {
-    console.log(this.props)
-    if(this.props.cards)
-    {
-      console.log("Updating component")
-      if(!this.state.init)
-      {
-        this.setState({cards:this.props.cards, init:true})
-        console.log("SetEdit state", this.state)
-      }
-    }
-
-  }
   constructor(props){
     super(props);
     this.state = { cards:[], set:{}, init:false};
   }
 
+  componentDidMount() {
+    // this.props.dispatch(setActions.fetchSet(this.props.match.params.id));
+    this.setState({init:false})
+    // this.fetchTerms()
+    this.waitForData()
+    
+  }
+
+  fetchTerms = async () => {
+    const set = await setService.fetchSet(this.props.match.params.id) 
+    this.setState({cards:set.cards, set:set.set});
+  }
+
+
+  componentDidUpdate() {
+
+  }
+
+
   onSubmit = (formValues) => {
-    console.log(this.props.terms.terms)
-    console.log(this.props.terms.terms.map(el=>{return el.id}))
-    console.log(formValues)
+    console.log("Cards:", this.state.cards)
+    console.log("Form Values:", formValues)
   }
-
-  getId(str) {
-    return str.split('-')[1];
-  }
-
 
   renderTerms() {
     console.log("SetEdit props:" ,this.props)
 
-    if(this.props.cards)
+    if(this.state.cards)
     {
+      console.log("This state cards",this.state.cards)
 
-
-      return this.props.cards.map(({_id,term,definition}) => {
+      return this.state.cards.map(({_id,term,definition}) => {
+        // console.log(term)
+        // console.log(definition)
         return (
-          <TermCard id={_id} key={_id} index={_id} term={term} definition={definition}></TermCard>
+          <TermCard id={_id} key={_id} index={_id} term={term} definition={definition} onDelete={() => this.deleteCard(_id)}></TermCard>
         );
       })
     }
@@ -65,12 +64,32 @@ class SetEdit extends React.Component {
 
   }
 
+  deleteCard = (id) => {
+    console.log("Deleting card")
+    // terms.filter(el => el.id !== action.payload)
+    this.setState({cards:[...this.state.cards.filter(el => el._id !== id)]})
+  }
 
-  readInitialState() {
-    if(this.props.cards)
+  createCard = () => {
+    this.setState({cards:[...this.state.cards, {_id:"z" + Math.floor(Math.random() * 1000), newCard:true}]})
+    console.log("Created Card", this.state.cards)
+  }
+
+  waitForData = async () =>{
+    await this.fetchTerms()
+    console.log("Fetched terms")
+    this.setState({init:true})
+  }
+
+
+  readInitialState = () => {
+    
+    console.log("Reading initial state", this.state)
+    if(this.state.cards && this.state.init && this.state.cards.length > 0)
     {
+      console.log("Modyfing initial state")
       const cards = {}
-      this.props.cards.forEach(elem => {
+      this.state.cards.forEach(elem => {
         cards[elem._id] = {
           description:"",
           term:elem.term,
@@ -78,37 +97,44 @@ class SetEdit extends React.Component {
 
         }
       })
-      return {cards:cards};
+      console.log("Returning initial state", cards)
+      return {cards:cards, set:{title:this.state.set.name, description:this.state.set.description}};
     }
   }
-  
-  render (){
+
+  form = () => {
     return (
-      <div>
-        <Form
+      <Form
         initialValues={this.readInitialState()} 
+        initialValuesEqual={() => true}
         onSubmit={this.onSubmit} 
         render={({handleSubmit, form, submitting, pristine, values}) => (
         <form onSubmit={handleSubmit}>
           <Header></Header>
           {this.renderTerms()}
-          {/* <NewTerm></NewTerm> */}
+          <div className="d-grid gap-2">
+            <Button variant="primary" size="lg" onClick={this.createCard}>
+              Add Term
+            </Button>
+          </div>
           <div>
-            <button className="float-end btn btn-primary btn-success" type="submit">Save</button>
+            <button className="float-end btn btn-primary btn-success mt-2" type="submit" >Save</button>
           </div>
           <pre>{JSON.stringify(values, 0, 2)}</pre>
         </form>
         )} />
+    )
+  }
+  
+  render (){
+    return (
+      <div>
+        {this.state.init ? this.form() : "Loading"}
       </div>
       
     );
   }
 };
 
-const mapStateToProps = (state) => {
-  return { 
-      cards: state.set.cards,
-  }
-}
 
-export default connect(mapStateToProps)(SetEdit);
+export default SetEdit;

@@ -5,19 +5,13 @@ import { connect } from 'react-redux';
 
 class TermCard extends React.Component {
 
-  deleteEntry = () => {
-    console.log(this.props.id)
-    //console.log(this.props)
-    console.log(this.props)
-    this.props.deleteTerm(this.props.id);
-  } 
 
   render (){
     return (
       <div className="card mb-3 border-0" style={{background:"rgba(0, 0, 0, 0.0)"}}>
         <div className="card-header text-white bg-secondary">
           id={this.props.id} index={this.props.index}
-          <i className="bi bi-trash float-end"style={{cursor:"pointer"}} onClick={this.deleteEntry}></i>
+          <i className="bi bi-trash float-end"style={{cursor:"pointer"}} onClick={this.props.onDelete}></i>
         </div>
         <div className="card-body bg-dark text-white">
             <div className="row">

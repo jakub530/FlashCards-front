@@ -1,5 +1,5 @@
 import React from 'react';
-import { addTerm} from '../../actions';
+
 import { connect } from 'react-redux';
 import SetCard from './SetCard';
 
