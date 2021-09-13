@@ -15,7 +15,7 @@ class Header extends React.Component {
           <div className="card-body text-white bg-dark">
             <div className="mb-3">
               <label  className="form-label">Title</label>
-              <Field component="input" name="set.title" type="email" className="form-control" id="exampleFormControlInput1"/>
+              <Field component="input" name="set.title" className="form-control" id="exampleFormControlInput1"/>
             </div>
             <div className="mb-3">
               <label  className="form-label">Description</label>
