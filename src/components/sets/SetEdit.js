@@ -25,10 +25,30 @@ class SetEdit extends React.Component {
     this.setState({cards:response.cards, set:response.set});
   }
 
-  onSubmit = (formValues) => {
-    // To Do: Actually do something after submit
-    console.log("Cards:", this.state.cards)
-    console.log("Form Values:", formValues)
+  processCards = (formValues) => {
+    const stateCards = this.state.cards.map((elem) => {
+      return {
+        _id:elem._id, 
+        newCard:elem.newCard
+      }
+    })
+    console.log("stateCards:", stateCards)
+    const cards = []
+    stateCards.forEach(({_id,newCard}) => {
+      const card = {...formValues.cards[_id], _id, newCard}
+      cards.push(card)
+    })
+
+    console.log("Processed cards:", cards)
+    return(cards)
+  }
+
+  onSubmit = async (formValues) => {
+    const cards = this.processCards(formValues)
+    const set = formValues.set;
+    const id = this.props.match.params.id;
+    
+    await setService.patchSet(id, set, cards)
   }
 
   renderCards() {

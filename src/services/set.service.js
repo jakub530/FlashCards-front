@@ -15,6 +15,16 @@ const fetchSet = async (id) => {
   return set;
 }
 
+const patchSet = async (id, set, cards) => {
+  console.log("Patching Set")
+  console.log(id)
+  console.log(set)
+
+  console.log(cards)
+  await handleRequest(`/sets/${id}`, "patch", {set:{name:set.title, description:set.description},cards})
+
+}
+
 const handleRequest = async(endpoint, request_type, payload = null) =>
 {
   let response
@@ -58,5 +68,6 @@ const handleRequest = async(endpoint, request_type, payload = null) =>
 export const setService = {
     fetchSets,
     fetchSet,
+    patchSet,
 };
 
