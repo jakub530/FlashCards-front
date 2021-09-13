@@ -20,7 +20,7 @@ class MainMenu extends React.Component {
     return (
       <div className="mt-5">
         <div className="d-grid gap-2 col-6 mx-auto">
-          <Link className="btn btn-primary" type="button" to="/sessions/session">Learning Sessions</Link>
+          <Link className="btn btn-primary" type="button" to="/sessions">Select a Session</Link>
           <Link className="btn btn-primary" type="button" to="/sets">Learning Sets</Link>
         </div>
       </div>

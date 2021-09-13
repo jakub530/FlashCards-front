@@ -3,17 +3,17 @@ import SetForm from './SetForm';
 import ObjectID from "bson-objectid";
 
 
-class SetEdit extends React.Component {
+class SetCreate extends React.Component {
   
   render (){
     return (
       <SetForm 
-        fetchData={true}
-        submit="patch"
-        id={this.props.match.params.id}
+        fetchData={false}
+        submit="put"
+        id={ObjectID().toHexString()}
       />
     );
   }
 };
 
-export default SetEdit;
+export default SetCreate;

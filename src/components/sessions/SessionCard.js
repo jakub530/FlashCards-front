@@ -9,14 +9,14 @@ import { setService } from '../../services';
 
 const SetCard = (props) => {
     
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
-    const fetchSet = async (id) => {
-        console.log("Clicked fetch set")
+    // const fetchSet = async (id) => {
+    //     console.log("Clicked fetch set")
         
-        await dispatch(setActions.fetchSet(id));
-        history.push(`/sets/edit/${props.id}`);
-    }
+    //     await dispatch(setActions.fetchSet(id));
+    //     history.push(`/sets/edit/${props.id}`);
+    // }
 
 
 
@@ -27,8 +27,8 @@ const SetCard = (props) => {
             <Card.Text>
               {props.description}
             </Card.Text>
-            <Button variant="primary" onClick={() => fetchSet(props.id)}>Edit Set</Button> {' '}
-            <Button className="ml-4" variant="danger" onClick={() => props.deleteSet(props.id)}>Delete Set</Button>
+            <Button variant="primary">Enter Session</Button> {' '}
+            {/* <Button className="ml-4" variant="danger" onClick={() => props.deleteSet(props.id)}>Delete Set</Button> */}
           </Card.Body>
         </Card>
     );
