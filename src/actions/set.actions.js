@@ -13,35 +13,6 @@ const fetchSet = (id) => async dispatch => {
     dispatch({type: setConstants.FETCH_SET,payload:set})
 }
 
-// const addTerm = (termId) => {
-//     return {
-//       type: setConstants.ADD_TERM,
-//       payload: termId
-//     }
-//   }
-  
-// const deleteTerm = (termId) => {
-//     return {
-//       type: setConstants.DELETE_TERM,
-//       payload: termId
-//     }
-//   }
-
-//   const fetchTerms = () => {
-//     return {
-//       type: setConstants.FETCH_TERMS,
-//     }
-//   }
-  
-// const getId = () => {
-//     return {
-//       type: setConstants.GET_ID,
-//     }
-//   }
-  
-// const fetchSession = (sessionId) => {
-  
-//   }
 
   
 export const setActions = {

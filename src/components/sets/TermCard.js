@@ -48,4 +48,4 @@ class TermCard extends React.Component {
 };
 
 // export default AddTerm;
-export default connect(null, { deleteTerm })(TermCard);
+export default connect(null)(TermCard);
