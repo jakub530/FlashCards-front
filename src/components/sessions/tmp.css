@@ -1,13 +1,13 @@
 .div {
-  color:#fa6764;
-  color:#f68459;
-  color:#f1a54f;
-  color:#edc945;
-  color:#e1e83b;
-  color:#afe432;
-  color:#44db20;
-  color:#17d724;
-  color:#00c9a7;
+  color: #fa6764;
+  color: #f68459;
+  color: #f1a54f;
+  color: #edc945;
+  color: #e1e83b;
+  color: #afe432;
+  color: #44db20;
+  color: #17d724;
+  color: #00c9a7;
 }
 
 /* return ["#fa6764", "#e1e83b", "#00c9a7"]

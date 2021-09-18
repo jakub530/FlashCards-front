@@ -1,4 +1,4 @@
-import { setConstants } from '../constants';
+import { setConstants } from "../constants";
 import { setService } from "../services";
 
 // const listSets = () => async (dispatch, getState) => {
@@ -6,17 +6,13 @@ import { setService } from "../services";
 //     console.log(sets)
 //     dispatch({type: setConstants.LIST_SETS,payload:sets})
 //   }
-  
-const fetchSet = (id) => async dispatch => {
-    const set = await setService.fetchSet(id)
-    console.log("Fetched Set:", set)
-    dispatch({type: setConstants.FETCH_SET,payload:set})
-}
 
+const fetchSet = (id) => async (dispatch) => {
+  const set = await setService.fetchSet(id);
+  console.log("Fetched Set:", set);
+  dispatch({ type: setConstants.FETCH_SET, payload: set });
+};
 
-  
 export const setActions = {
-    fetchSet,
-}
-    
-    
+  fetchSet,
+};

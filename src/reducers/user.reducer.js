@@ -1,20 +1,20 @@
-import { userConstants } from '../constants';
+import { userConstants } from "../constants";
 
 export function users(state = {}, action) {
   switch (action.type) {
     case userConstants.GETALL_REQUEST:
       return {
-        loading: true
+        loading: true,
       };
     case userConstants.GETALL_SUCCESS:
       return {
-        items: action.users
+        items: action.users,
       };
     case userConstants.GETALL_FAILURE:
-      return { 
-        error: action.error
+      return {
+        error: action.error,
       };
     default:
-      return state
+      return state;
   }
 }
