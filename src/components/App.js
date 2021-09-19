@@ -18,25 +18,27 @@ import NavBar from "./navigation/NavBar";
 
 const App = () => {
   return (
-    <div className="container">
-      <Router history={history}>
-        <NavBar></NavBar>
-        <Switch>
-          <Route path="/" exact component={MainMenu} />
-          <Route path="/sets" exact component={SetList} />
-          {/* <Route path="/sessions/session" exact component={Session} /> */}
-          <Route path="/sessions" exact component={SessionList} />
-          <Route path="/sessions/create" exact component={SessionCreate} />
-          <Route path="/sessions/main/view/:id" exact component={SessionTop} />
-          <Route path="/login" exact component={Login} />
-          <Route path="/sets/edit/:id" exact component={SetEdit} />
-          <Route path="/sets/create" exact component={SetCreate} />
-        </Switch>
-      </Router>
+    <div>
+      <div className="container">
+        <Router history={history}>
+          <NavBar></NavBar>
+          <Switch>
+            <Route path="/" exact component={MainMenu} />
+            <Route path="/sets" exact component={SetList} />
+            {/* <Route path="/sessions/session" exact component={Session} /> */}
+            <Route path="/sessions" exact component={SessionList} />
+            <Route path="/sessions/create" exact component={SessionCreate} />
+            <Route path="/sessions/main/view/:id" exact component={SessionTop} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/sets/edit/:id" exact component={SetEdit} />
+            <Route path="/sets/create" exact component={SetCreate} />
+          </Switch>
+        </Router>
+      </div>
     </div>
   );
 };
 
-document.body.style = "background: #ccc;";
+document.body.style = "background: #334756";
 
 export default App;

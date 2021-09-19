@@ -1,0 +1,55 @@
+$dark:#082032;
+$darker:#05141F;
+$primary:#2C394B;
+$secondary:#334756;
+$light:#FF4C29;
+
+$theme-colors: (
+  "primary": $primary,
+  "danger": $light,
+  "light":$secondary
+);
+
+
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+
+
+.bg-light {
+  
+}
+
+.Navbar {
+  background-color: $dark;
+  color:white !important;
+}
+
+.nav-link {
+  color:white;
+}
+
+
+.selected-card {
+  background-color: aqua;
+}
+
+.Background {
+  background-color: red;
+  height:100%;
+}
+
+.btn-primary {
+  background-color: $dark;
+  // border-color: $dark;
+}
+
+.card {
+  background-color: $primary;
+  color:white;
+}
+
+.card-header {
+  background-color: $dark;
+}
+

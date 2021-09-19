@@ -10,7 +10,7 @@ class TermCard extends React.Component {
         className="card mb-3 border-0"
         style={{ background: "rgba(0, 0, 0, 0.0)" }}
       >
-        <div className="card-header text-white bg-secondary">
+        <div className="card-header">
           id={this.props.id} index={this.props.index}
           <i
             className="bi bi-trash float-end"
@@ -18,7 +18,7 @@ class TermCard extends React.Component {
             onClick={this.props.onDelete}
           ></i>
         </div>
-        <div className="card-body bg-dark text-white">
+        <div className="card-body">
           <div className="row">
             <div className="col">
               <label className="form-label">Term</label>

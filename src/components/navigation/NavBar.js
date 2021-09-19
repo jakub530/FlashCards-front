@@ -63,7 +63,7 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <Navbar bg="light" expand="lg">
+      <Navbar expand="lg" className="Navbar" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand>
             <Link className="navbar-brand" to="/">
