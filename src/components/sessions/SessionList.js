@@ -45,19 +45,26 @@ class SessionList extends React.Component {
   render() {
     return (
       <div>
-        {this.state.sessions ?   
-        <div>
-          {this.renderSession()}
-          <div className="d-grid gap-2">
-            <Link className="btn btn-primary" type="button" to="/sessions/create">
-              Create a session
-            </Link>
-            {/* <SessionSplitter></SessionSplitter> */}
-            {/* <Button variant="primary" size="lg" onClick={this.createCard}>
+        {this.state.sessions ? (
+          <div>
+            {this.renderSession()}
+            <div className="d-grid gap-2">
+              <Link
+                className="btn btn-primary"
+                type="button"
+                to="/sessions/create"
+              >
+                Create a session
+              </Link>
+              {/* <SessionSplitter></SessionSplitter> */}
+              {/* <Button variant="primary" size="lg" onClick={this.createCard}>
                   Add Term
                 </Button> */}
+            </div>
           </div>
-        </div> : "Loading" }
+        ) : (
+          "Loading"
+        )}
       </div>
     );
   }

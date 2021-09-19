@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { testApi } from "../../actions";
+import Card from "react-bootstrap/Card";
 
 import { userActions } from "../../actions";
 
@@ -17,13 +18,25 @@ class MainMenu extends React.Component {
 
   render() {
     return (
-      <div className="mt-5">
-        <div className="d-grid gap-2 col-6 mx-auto">
-          <Link className="btn btn-primary" type="button" to="/sessions">
-            Select a Session
+      <div className="mt-2">
+        <div className="d-grid gap-2  mx-auto">
+          <Link to="/sessions" className="menu-link">
+            <Card className="mt-1">
+              <Card.Header>
+                <Card.Title>Sessions</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                Continue Existing Session and Create New Ones
+              </Card.Body>
+            </Card>
           </Link>
-          <Link className="btn btn-primary" type="button" to="/sets">
-            Learning Sets
+          <Link to="/sets" className="menu-link">
+            <Card className="mt-1">
+              <Card.Header>
+                <Card.Title>Learning Sets</Card.Title>
+              </Card.Header>
+              <Card.Body>Create and Manage Your Learning Sets</Card.Body>
+            </Card>
           </Link>
         </div>
       </div>

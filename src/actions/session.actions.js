@@ -19,7 +19,14 @@ const evolveSession = (id, update) => async (dispatch) => {
   dispatch({ type: sessionConstants.EVOLVE_SESSION, payload: session });
 };
 
+const createSession = (data) => async (dispatch) => {
+  const session = await sessionService.createSession(data);
+  console.log("Created Session:", session);
+  dispatch({ type: sessionConstants.CREATE_SESSION, payload: session });
+};
+
 export const sessionActions = {
   fetchSession,
   evolveSession,
+  createSession,
 };

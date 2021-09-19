@@ -1,67 +1,98 @@
 import React from "react";
-
-import { connect } from "react-redux";
-import SetCard from "../sets/SetCard";
+import SetListForm from "../sets/SetListForm";
+import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
-
-import { setService } from "../../services";
-
-import { setsActions } from "../../actions";
+import { connect } from "react-redux";
+import { sessionService } from "../../services";
+import { sessionActions } from "../../actions";
+import Form from "react-bootstrap/Form";
 
 class SessionCreate extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(setsActions.listSets());
-    console.log("Setlist sets", this.props.sets);
+  constructor(props) {
+    super(props);
+    this.state = { sets: [], name: "", description: "" };
   }
 
-  //   componentDidUpdate()
-  //   {
-
-  //     this.props.dispatch(setActions.listSets());
-  //     console.log("Setlist sets", this.props.sets)
-  //   }
-
-  deleteSet = async (id) => {
-    await setService.deleteSet(id);
-    console.log("Deleted Set");
-    this.props.dispatch(setsActions.listSets());
+  onListUpdate = (idList) => {
+    console.log("SessionCreate:", idList);
+    this.setState({ sets: idList });
   };
 
-  renderSets = () => {
-    return this.props.sets.map((set) => {
-      return (
-        <SetCard
-          title={set.name}
-          description={set.description}
-          id={set._id}
-          deleteSet={this.deleteSet}
-        ></SetCard>
-      );
+  createSession = () => {
+    console.log("State", this.state);
+    console.log(this.state.sets.selected);
+    this.props.createSession({
+      sets: this.state.sets.selected,
+      session: { name: this.state.name, description: this.state.description },
     });
+    console.log("Session Created");
+  };
+
+  updateName = (event) => {
+    this.setState({ name: event.target.value });
+  };
+
+  updateDescription = (event) => {
+    this.setState({ description: event.target.value });
   };
 
   render() {
     return (
       <div>
-        {this.props.sets ? this.renderSets() : "No sets to show"}
-        <div className="d-grid gap-2">
-          <Link className="btn btn-primary" type="button" to="/sets/create">
-            Create a set
-          </Link>
-          {/* <Button variant="primary" size="lg" onClick={this.createCard}>
-                Add Term
-              </Button> */}
-        </div>
+        <Card className="mt-3" style={{ backgroundColor: "#505C70" }}>
+          <Card.Title
+            className="text-center mt-3 py-2 mx-3 font-size:40px"
+            style={{ color: "white", backgroundColor: "#082032" }}
+          >
+            <h4>Name and Description</h4>
+          </Card.Title>
+          <Card.Body>
+            <Form>
+              <Form.Group>
+                <Form.Label>Title</Form.Label>
+                <Form.Control
+                  component="input"
+                  value={this.state.name}
+                  onChange={this.updateName}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows="3"
+                  value={this.state.description}
+                  onChange={this.updateDescription}
+                />
+              </Form.Group>
+            </Form>
+          </Card.Body>
+        </Card>
+
+        <Card className="mt-3" style={{ backgroundColor: "#505C70" }}>
+          <Card.Title
+            className="text-center mt-3 py-2 mx-3 font-size:40px"
+            style={{ color: "white", backgroundColor: "#082032" }}
+          >
+            <h4>Select Sets To Add To Your Session</h4>
+          </Card.Title>
+          <Card.Body>
+            <SetListForm select onListUpdate={this.onListUpdate} />
+          </Card.Body>
+        </Card>
+        <Button
+          variant="primary"
+          size="lg"
+          className="mt-3"
+          onClick={this.createSession}
+        >
+          Create Session
+        </Button>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    sets: Object.values(state.sets),
-  };
-};
-
-export default connect(mapStateToProps)(SessionCreate);
+export default connect(null, { createSession: sessionActions.createSession })(
+  SessionCreate
+);

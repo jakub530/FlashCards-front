@@ -20,6 +20,9 @@ export const session = (state = init_state, action) => {
     case sessionConstants.EVOLVE_SESSION:
       console.log("Evolve Session");
       return { session: action.payload };
+    case sessionConstants.CREATE_SESSION:
+      console.log("Created Session");
+      return { session: action.payload };
     default:
       return state;
   }

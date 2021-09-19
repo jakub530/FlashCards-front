@@ -81,7 +81,7 @@ class SetForm extends React.Component {
     const cards = this.processCards(formValues);
     const set = formValues.set;
     const id = this.props.id;
-    if (this.props.submit == "patch") {
+    if (this.props.submit === "patch") {
       await setService.patchSet(id, set, cards);
     } else {
       await setService.createSet(id, set, cards);
@@ -175,7 +175,7 @@ class SetForm extends React.Component {
                 Save
               </button>
             </div>
-            <pre>{JSON.stringify(values, 0, 2)}</pre>
+            <pre style={{ color: "white" }}>{JSON.stringify(values, 0, 2)}</pre>
           </form>
         )}
       />

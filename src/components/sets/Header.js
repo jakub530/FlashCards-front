@@ -1,29 +1,30 @@
 import React from "react";
 import { Field } from "react-final-form";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 class Header extends React.Component {
   render() {
     return (
-      <div>
-        <div
-          className="card mb-3 mt-3 border-0"
-          style={{ background: "rgba(0, 0, 0, 0.0)" }}
-        >
-          <div className="card-header  text-white  bg-secondary">
-            Title & Description
-          </div>
-          <div className="card-body text-white bg-dark">
-            <div className="mb-3">
-              <label className="form-label">Title</label>
+      <Card className="mt-3 mb-2">
+        <Card.Header as="h5">
+          Title & Description
+          {/* {props.title} */}
+        </Card.Header>
+        <Card.Body>
+          <Form>
+            <Form.Group>
+              <Form.Label>Title</Form.Label>
               <Field
                 component="input"
                 name="set.title"
                 className="form-control"
                 id="exampleFormControlInput1"
               />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Description</label>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Description</Form.Label>
               <Field
                 component="textarea"
                 name="set.description"
@@ -31,10 +32,10 @@ class Header extends React.Component {
                 id="exampleFormControlTextarea1"
                 rows="3"
               />
-            </div>
-          </div>
-        </div>
-      </div>
+            </Form.Group>
+          </Form>
+        </Card.Body>
+      </Card>
     );
   }
 }

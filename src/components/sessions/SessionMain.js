@@ -26,7 +26,7 @@ class SessionMain extends React.Component {
             <Form.Control
               type="email"
               readOnly
-            //   placeholder={this.props.cards.currentCard.term}
+              //   placeholder={this.props.cards.currentCard.term}
             />
           </Col>
           <Col md>

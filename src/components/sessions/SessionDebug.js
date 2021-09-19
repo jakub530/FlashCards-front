@@ -24,8 +24,8 @@ class SessionDebug extends React.Component {
 
   render() {
     return (
-      <Card className="mt-3" style={{ background: "#bbb" }}>
-        <Card.Title>Debug</Card.Title>
+      <Card className="mt-3">
+        <Card.Title className="mt-3 mx-3">Debug</Card.Title>
         <Card.Body>
           <Container>
             <Row className="mt-2">

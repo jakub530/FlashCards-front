@@ -28,8 +28,17 @@ const evolveSession = async (id, update) => {
   return sessions;
 };
 
+const createSession = async (data) => {
+  console.log("Creating Session");
+  console.log("Data:", data);
+  const session = await utilityService.handleRequest(`/session`, "post", data);
+  console.log("Created Session: ", session);
+  return session;
+};
+
 export const sessionService = {
   fetchSessions,
   fetchSession,
   evolveSession,
+  createSession,
 };

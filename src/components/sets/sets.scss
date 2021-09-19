@@ -1,55 +1,53 @@
-$dark:#082032;
-$darker:#05141F;
-$primary:#2C394B;
-$secondary:#334756;
-$light:#FF4C29;
+$dark: #082032;
+$darker: #05141f;
+$primary: #2c394b;
+$secondary: #334756;
+$light: #ff4c29;
+$green: #2f891d;
 
 $theme-colors: (
-  "primary": $primary,
-  "danger": $light,
-  "light":$secondary
+  "primary": $dark,
+  "light": $secondary,
+  "danger": #dc3545,
+  "secondary": #334756,
+  "success": $green,
 );
-
-
 
 @import "node_modules/bootstrap/scss/bootstrap";
 
-
-
 .bg-light {
-  
 }
 
 .Navbar {
-  background-color: $dark;
-  color:white !important;
+  background-color: $dark !important;
+  color: white !important;
 }
 
 .nav-link {
-  color:white;
+  color: white;
 }
-
 
 .selected-card {
-  background-color: aqua;
-}
-
-.Background {
-  background-color: red;
-  height:100%;
-}
-
-.btn-primary {
-  background-color: $dark;
-  // border-color: $dark;
+  background-color: $green;
 }
 
 .card {
   background-color: $primary;
-  color:white;
+  color: white;
+}
+
+.menu-link {
+  &:hover {
+    & .card-header {
+      background-color: $darker;
+    }
+  }
 }
 
 .card-header {
   background-color: $dark;
-}
 
+  &.selected-card {
+    background-color: $light;
+  }
+}
