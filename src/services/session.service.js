@@ -18,7 +18,7 @@ const fetchSession = async (id) => {
 };
 
 const evolveSession = async (id, update) => {
-  console.log("Evolving Session");
+  console.log("Evolving Session", id, update);
   const sessions = await utilityService.handleRequest(
     `/session/evolve/${id}`,
     "post",

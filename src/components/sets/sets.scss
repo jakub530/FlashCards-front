@@ -4,11 +4,13 @@ $primary: #2c394b;
 $secondary: #334756;
 $light: #ff4c29;
 $green: #2f891d;
+$purple: #561975;
+$red: #dc3545;
 
 $theme-colors: (
   "primary": $dark,
   "light": $secondary,
-  "danger": #dc3545,
+  "danger": $red,
   "secondary": #334756,
   "success": $green,
 );
@@ -25,6 +27,30 @@ $theme-colors: (
 
 .nav-link {
   color: white;
+}
+
+.bucket {
+  color: white;
+
+  &.inactiveBucket {
+    filter: brightness(50%);
+  }
+}
+
+.main-card {
+  border: solid;
+  &.correct {
+    border-color: $green;
+  }
+  &.corrected {
+    border-color: $purple;
+  }
+  &.pending {
+    border-color: $secondary;
+  }
+  &.false {
+    border-color: $red;
+  }
 }
 
 .selected-card {

@@ -54,7 +54,7 @@ class SessionTop extends React.Component {
 const mapStateToProps = (state) => {
   console.log("SessionTop State:", state);
   return {
-    session: state.session.session.session,
+    session: state.session.session,
   };
 };
 

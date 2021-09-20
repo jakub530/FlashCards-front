@@ -16,13 +16,13 @@ export const session = (state = init_state, action) => {
   switch (action.type) {
     case sessionConstants.FETCH_SESSION:
       console.log("Reached fetch action");
-      return { ...state, session: action.payload };
+      return { ...state, ...action.payload };
     case sessionConstants.EVOLVE_SESSION:
       console.log("Evolve Session");
-      return { session: action.payload };
+      return { ...action.payload };
     case sessionConstants.CREATE_SESSION:
       console.log("Created Session");
-      return { session: action.payload };
+      return { ...action.payload };
     default:
       return state;
   }

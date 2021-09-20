@@ -62,7 +62,7 @@ class SessionDebug extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    session: state.session.session,
+    session: state.session,
   };
 };
 
