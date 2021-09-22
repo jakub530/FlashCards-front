@@ -29,6 +29,16 @@ const logout = () => async (dispatch, getState) => {
   dispatch({ type: userConstants.LOGOUT });
 };
 
+const register = (email, password, userName) => async (dispatch, getState) => {
+
+  const {user, error} = await userService.register(email, password, userName);
+
+  if(user) {
+    dispatch({type:userConstants.LOGIN_SUCCESS, user});
+    history.push("/");
+  }
+}
+
 const getAll = () => async (dispatch, getState) => {
   dispatch({ type: userConstants.GETALL_REQUEST });
   console.log("Get State", getState());
@@ -53,4 +63,5 @@ export const userActions = {
   login,
   logout,
   getAll,
+  register
 };

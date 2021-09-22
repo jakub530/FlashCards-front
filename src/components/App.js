@@ -3,6 +3,8 @@ import "jquery";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
+import { connect } from "react-redux";
+
 import SessionList from "./sessions/SessionList";
 import SessionTop from "./sessions/SessionTop";
 import SetEdit from "./sets/SetEdit";
@@ -12,37 +14,59 @@ import SetList from "./sets/SetList";
 import SessionCreate from "./sessions/SessionCreate";
 // import Session from './sessions/SessionSplitter';
 import Login from "./auth/Login";
+import Register from "./auth/Register";
 import history from "../history";
 import { Router, Route, Switch } from "react-router-dom";
 import NavBar from "./navigation/NavBar";
+import RouteRequiresLogin from "./auth/RouteRequiresLogin";
 
-const App = () => {
+class App extends React.Component {
+
+  render(){
   return (
     <div>
       <div className="container">
         <Router history={history}>
           <NavBar></NavBar>
           <Switch>
-            <Route path="/" exact component={MainMenu} />
-            <Route path="/sets" exact component={SetList} />
-            {/* <Route path="/sessions/session" exact component={Session} /> */}
-            <Route path="/sessions" exact component={SessionList} />
-            <Route path="/sessions/create" exact component={SessionCreate} />
-            <Route
-              path="/sessions/main/view/:id"
-              exact
-              component={SessionTop}
-            />
+            <RouteRequiresLogin exact path="/">
+              <MainMenu/>
+            </RouteRequiresLogin>
+            <RouteRequiresLogin exact path="/sets">
+              <SetList/>
+            </RouteRequiresLogin>
+            <RouteRequiresLogin exact path="/sessions">
+              <SessionList/>
+            </RouteRequiresLogin>
+            <RouteRequiresLogin exact path="/sessions/create">
+              <SessionCreate/>
+            </RouteRequiresLogin>
+            <RouteRequiresLogin exact path="/sessions/main/view/:id">
+              <SessionTop/>
+            </RouteRequiresLogin>
+            <RouteRequiresLogin exact path="/sets/edit/:id">
+              <SetEdit/>
+            </RouteRequiresLogin>
+            <RouteRequiresLogin exact path="/sets/create">
+              <SetCreate/>
+            </RouteRequiresLogin>
+            
             <Route path="/login" exact component={Login} />
-            <Route path="/sets/edit/:id" exact component={SetEdit} />
-            <Route path="/sets/create" exact component={SetCreate} />
+            <Route path="/register" exact component={Register} />
           </Switch>
         </Router>
       </div>
     </div>
   );
+}
 };
 
 document.body.style = "background: #334756";
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+
+export default connect(mapStateToProps)(App);

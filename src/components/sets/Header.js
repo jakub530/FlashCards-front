@@ -13,7 +13,6 @@ class Header extends React.Component {
           {/* {props.title} */}
         </Card.Header>
         <Card.Body>
-          <Form>
             <Form.Group>
               <Form.Label>Title</Form.Label>
               <Field
@@ -33,7 +32,6 @@ class Header extends React.Component {
                 rows="3"
               />
             </Form.Group>
-          </Form>
         </Card.Body>
       </Card>
     );

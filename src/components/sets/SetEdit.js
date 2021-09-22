@@ -7,7 +7,7 @@ class SetEdit extends React.Component {
       <SetForm
         fetchData={true}
         submit="patch"
-        id={this.props.match.params.id}
+        id={this.props.idAdress}
       />
     );
   }

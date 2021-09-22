@@ -36,9 +36,17 @@ const createSession = async (data) => {
   return session;
 };
 
+const deleteSession = async (id) => {
+  console.log("Deleting Session");
+  const session = await utilityService.handleRequest(`/session/${id}`, "delete");
+  console.log("Deleted Session: ", session);
+  return session;
+};
+
 export const sessionService = {
   fetchSessions,
   fetchSession,
   evolveSession,
   createSession,
+  deleteSession,
 };

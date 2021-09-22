@@ -11,12 +11,17 @@ const SetCard = (props) => {
   // const dispatch = useDispatch()
   const dispatch = useDispatch();
 
-  const fetchSet = async (id) => {
+  const fetchSession = async (id) => {
     console.log("Clicked fetch set");
 
     await dispatch(sessionActions.fetchSession(id));
     // history.push(`/sets/edit/${props.id}`);
     history.push(`/sessions/main/view/${props.id}`);
+  };
+
+  const deleteSession = async (id) => {
+    await sessionService.deleteSession(id);
+    console.log("Deleted Session");
   };
 
   return (
@@ -27,10 +32,18 @@ const SetCard = (props) => {
         <Button
           variant="primary"
           onClick={() => {
-            fetchSet(props.id);
+            fetchSession(props.id);
           }}
         >
           Enter Session
+        </Button>{" "}
+        <Button
+          variant="danger"
+          onClick={() => {
+            deleteSession(props.id);
+          }}
+        >
+          Delete Session
         </Button>{" "}
         {/* <Button className="ml-4" variant="danger" onClick={() => props.deleteSet(props.id)}>Delete Set</Button> */}
       </Card.Body>

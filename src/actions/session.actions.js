@@ -23,6 +23,7 @@ const createSession = (data) => async (dispatch) => {
   const session = await sessionService.createSession(data);
   console.log("Created Session:", session);
   dispatch({ type: sessionConstants.CREATE_SESSION, payload: session });
+  return session;
 };
 
 export const sessionActions = {

@@ -9,21 +9,22 @@ import history from "../../history";
 
 import { userActions } from "../../actions";
 
-class Login extends React.Component {
+class Register extends React.Component {
   constructor(props) {
     super(props);
 
     // reset login status
-    this.props.dispatch(userActions.logout());
 
     this.state = {
       email: "",
+      userName:"",
       password: "",
       submitted: false,
     };
   }
 
   handleChange = (e) => {
+    console.log(this.state)
     const { name, value } = e.target;
     console.log(value);
     this.setState({ [name]: value });
@@ -32,27 +33,35 @@ class Login extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.setState({ submitted: true });
-    const { email, password } = this.state;
+    const { email, password, userName } = this.state;
     const { dispatch } = this.props;
-    if (email && password) {
-      dispatch(userActions.login(email, password));
+    if (email && password && userName) {
+      dispatch(userActions.register(email, password, userName));
     }
   };
 
   render() {
     const { loggingIn } = this.props;
-    const { username, password, submitted } = this.state;
+    const { email, userName, password, submitted } = this.state;
     return (
       <Container fluid="md">
  
 
       <Card className="my-2 mx-auto w-50">
         <Card.Header>
-        <h2>Login</h2>
+        <h2>Sign Up</h2>
         </Card.Header>
         <Card.Body>
         <Form onSubmit={this.handleSubmit}>
-
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>User Name</Form.Label>
+            <Form.Control
+              name="userName"
+              type="text"
+              placeholder="Enter User Name"
+              onChange={this.handleChange}
+            />
+          </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
@@ -76,7 +85,7 @@ class Login extends React.Component {
             />
           </Form.Group>
           <Button variant="primary" type="submit">
-            Submit
+            Create account
           </Button>
         </Form>
         </Card.Body>
@@ -93,4 +102,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Register);

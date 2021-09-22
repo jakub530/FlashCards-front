@@ -67,7 +67,7 @@ class NavBar extends React.Component {
         <Container>
           <Navbar.Brand>
             <Link className="navbar-brand" to="/">
-              FlashCards
+              FlashCards - {process.env.NODE_ENV}
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -75,14 +75,20 @@ class NavBar extends React.Component {
             {/* Needed to put login on the right side apparently */}
             <Nav className="navbar-nav me-auto mb-2 mb-lg-0"></Nav>
             <Nav>
+              
               {this.state.loggedIn ? (
                 <Link className="nav-link" onClick={this.logOut} to="/">
                   Logout
                 </Link>
               ) : (
+                <React.Fragment>
                 <Link className="nav-link" to="/login">
                   Login
                 </Link>
+                <Link className="nav-link" to="/register">
+                  Sign Up
+                </Link>
+                </React.Fragment>
               )}
             </Nav>
           </Navbar.Collapse>
@@ -97,12 +103,5 @@ const mapStateToProps = (state) => {
     auth: state.auth,
   };
 };
-
-// function mapStateToProps(state) {
-//   const { loggingIn } = state.auth;
-//   return {
-//       loggingIn
-//   };
-// }
 
 export default connect(mapStateToProps)(NavBar);

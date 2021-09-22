@@ -20,6 +20,20 @@ const logout = () => {
   console.log("Removing from local storage");
 };
 
+const register =async (email, password, name) => {
+  // remove user from local storage to log user out
+  const response = await connect.post("/users", { email, password, name });
+
+  if (response.data.user) {
+    let user = response.data.user;
+    user.token = response.data.token;
+    localStorage.setItem("user", JSON.stringify(user));
+    return { user, error: null };
+  } else {
+    return { error: "Unable to log in", user: null };
+  }
+};
+
 const getAll = async () => {
   // console.log("auth token", authToken().Authorization)
   let response;
@@ -43,4 +57,5 @@ export const userService = {
   login,
   logout,
   getAll,
+  register
 };

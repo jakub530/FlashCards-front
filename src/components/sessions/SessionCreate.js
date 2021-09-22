@@ -3,7 +3,7 @@ import SetListForm from "../sets/SetListForm";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
-import { sessionService } from "../../services";
+import history from "../../history";
 import { sessionActions } from "../../actions";
 import Form from "react-bootstrap/Form";
 
@@ -18,14 +18,16 @@ class SessionCreate extends React.Component {
     this.setState({ sets: idList });
   };
 
-  createSession = () => {
+  createSession = async () => {
     console.log("State", this.state);
     console.log(this.state.sets.selected);
-    this.props.createSession({
+    const session = await this.props.createSession({
       sets: this.state.sets.selected,
       session: { name: this.state.name, description: this.state.description },
     });
+    console.log("Created a session", session)
     console.log("Session Created");
+    history.push(`/sessions/main/view/${session._id}`)
   };
 
   updateName = (event) => {

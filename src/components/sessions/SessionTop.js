@@ -21,7 +21,8 @@ class SessionTop extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchSession(this.props.match.params.id);
+    console.log("Session Top", this.props)
+    this.props.fetchSession(this.props.idAdress);
   }
 
   componentDidUpdate() {
