@@ -29,13 +29,19 @@ class Login extends React.Component {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     this.setState({ submitted: true });
     const { email, password } = this.state;
     const { dispatch } = this.props;
     if (email && password) {
-      dispatch(userActions.login(email, password));
+      await dispatch(userActions.login(email, password));
+      console.log("Redirect", this.props)
+      if(!this.props.noRedirect)
+      {
+        
+        history.push("/")
+      }
     }
   };
 

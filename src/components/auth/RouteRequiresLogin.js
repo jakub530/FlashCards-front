@@ -9,7 +9,7 @@ const RouteRequiresLogin = props => {
    const userIsLogged = props.auth.loggedIn
    console.log("RouteRequiresLogin", props.computedMatch.params.id)
    return (
-      <Route {...props}>{userIsLogged ? React.cloneElement(props.children, {idAdress:props.computedMatch.params.id}) : <Login/>}</Route>
+      <Route {...props}>{userIsLogged ? React.cloneElement(props.children, {idAdress:props.computedMatch.params.id}) : <Login noRedirect={true}/>}</Route>
    );
 };
 

@@ -29,6 +29,9 @@ class SessionList extends React.Component {
   //     this.props.dispatch(setActions.listSets());
   //     console.log("Setlist sets", this.props.sets)
   //   }
+  onDelete = () => {
+    this.waitForData()
+  }
 
   renderSession = () => {
     return this.state.sessions.map((session) => {
@@ -37,6 +40,7 @@ class SessionList extends React.Component {
           title={session.name}
           description={session.description}
           id={session._id}
+          onDelete={this.onDelete}
         ></SessionCard>
       );
     });

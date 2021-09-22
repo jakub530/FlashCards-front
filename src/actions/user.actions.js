@@ -10,7 +10,7 @@ const login = (email, password) => async (dispatch) => {
 
   if (user) {
     dispatch({ type: userConstants.LOGIN_SUCCESS, user });
-    history.push("/");
+    // history.push("/");
   } else {
     dispatch({
       type: userConstants.LOGIN_FAILURE,
