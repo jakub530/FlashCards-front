@@ -4,8 +4,10 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import "./Session.css";
+import { Link } from "react-router-dom";
 
 class SessionSplitter extends React.Component {
   renderColors(input) {
@@ -45,6 +47,7 @@ class SessionSplitter extends React.Component {
               {this.renderColors(this.input)}
             </Row>
           </Container>
+          <Link className="btn btn-primary" to={`/sessions/main/items/${this.props.session._id}`}>View Cards</Link>
         </Card.Body>
       </Card>
     );

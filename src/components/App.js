@@ -19,6 +19,7 @@ import history from "../history";
 import { Router, Route, Switch } from "react-router-dom";
 import NavBar from "./navigation/NavBar";
 import RouteRequiresLogin from "./auth/RouteRequiresLogin";
+import SessionItemList from "./sessions/SessionItemList";
 
 class App extends React.Component {
 
@@ -49,6 +50,9 @@ class App extends React.Component {
             </RouteRequiresLogin>
             <RouteRequiresLogin exact path="/sets/create">
               <SetCreate/>
+            </RouteRequiresLogin>
+            <RouteRequiresLogin exact path="/sessions/main/items/:id">
+              <SessionItemList/>
             </RouteRequiresLogin>
             
             <Route path="/login" exact component={Login} />

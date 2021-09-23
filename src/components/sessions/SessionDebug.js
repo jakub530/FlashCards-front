@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import "./Session.css";
 
 // import FloatingLabel from 'react-bootstrap/FloatingLabel'
-import { sessionActions } from "../../actions";
+import { sessionActions, sessionCardActions } from "../../actions";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
@@ -20,6 +20,10 @@ class SessionDebug extends React.Component {
     console.log(update);
     const id = this.props.session.session._id;
     this.props.evolveSession(id, update);
+  }
+
+  findAllSessionCards(id) {
+    this.props.findAllSessionCards(id);
   }
 
   render() {
@@ -52,6 +56,14 @@ class SessionDebug extends React.Component {
                 Next
               </Button>
             </Row>
+            <Row className="mt-2">
+              <Button
+                onClick={() => this.findAllSessionCards(this.props.session.session._id)}
+                variant="secondary"
+              >
+                Find Session Cards
+              </Button>
+            </Row>
             <pre>{JSON.stringify(this.props.session, null, 2)}</pre>
           </Container>
         </Card.Body>
@@ -69,4 +81,5 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   fetchSession: sessionActions.fetchSession,
   evolveSession: sessionActions.evolveSession,
+  findAllSessionCards: sessionCardActions.findAllSessionCards
 })(SessionDebug);

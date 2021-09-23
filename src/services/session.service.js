@@ -43,10 +43,18 @@ const deleteSession = async (id) => {
   return session;
 };
 
+const fetchSessionCards = async (id) => {
+  console.log("Find Session Cards");
+  const sessionCards = await utilityService.handleRequest(`/session/cards/${id}`, "get");
+  console.log("Found Cards: ", sessionCards);
+  return sessionCards;
+};
+
 export const sessionService = {
   fetchSessions,
   fetchSession,
   evolveSession,
   createSession,
   deleteSession,
+  fetchSessionCards,
 };

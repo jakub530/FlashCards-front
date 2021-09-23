@@ -46,7 +46,7 @@ class SessionTop extends React.Component {
       <div>
         {this.state.init ? <SessionSplitter /> : "Loading"}
         {this.state.init ? <SessionMain /> : "Loading"}
-        <SessionDebug></SessionDebug>
+        {process.env.NODE_ENV==="development" && <SessionDebug></SessionDebug>}
       </div>
     );
   }
