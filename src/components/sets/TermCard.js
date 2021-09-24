@@ -12,7 +12,7 @@ class TermCard extends React.Component {
     return (
       <Card className="mt-2 mb-2">
         <Card.Header>
-          id={this.props.id} index={this.props.index}
+          {this.props.index}
           <i
             className="bi bi-trash float-end"
             style={{ cursor: "pointer" }}
@@ -32,7 +32,7 @@ class TermCard extends React.Component {
             <Row>
               <Col>
                 <Field
-                  name={`cards.${this.props.index}.term`}
+                  name={`cards.${this.props.id}.term`}
                   component="input"
                   type="text"
                   className="form-control"

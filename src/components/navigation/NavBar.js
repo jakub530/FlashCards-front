@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -19,7 +18,6 @@ class NavBar extends React.Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(userActions.getAll());
     console.log(this.props);
     console.log("NavBar Update", this.props);
     const auth = this.props.auth;
@@ -35,11 +33,9 @@ class NavBar extends React.Component {
         this.setState({ loggedIn: false });
       }
     }
-    //this.props.dispatch(userActions.getAll());
   }
 
   componentDidUpdate() {
-    this.props.dispatch(userActions.getAll());
     console.log(this.props);
     console.log("NavBar Update", this.props);
     const auth = this.props.auth;
@@ -56,10 +52,6 @@ class NavBar extends React.Component {
       }
     }
   }
-  //   onClick = () => {
-  //     console.log(this.props)
-  //     this.props.testApi()
-  //   }
 
   render() {
     return (

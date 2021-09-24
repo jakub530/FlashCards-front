@@ -94,12 +94,12 @@ class SetForm extends React.Component {
     if (this.state.cards) {
       const cardList = this.objectToArray(this.state.cards);
       console.log("Card list", cardList);
-      return cardList.map(({ _id, term, definition }) => {
+      return cardList.map(({ _id, term, definition }, index) => {
         return (
           <TermCard
             id={_id}
             key={_id}
-            index={_id}
+            index={index+1}
             term={term}
             definition={definition}
             onDelete={() => this.deleteCard(_id)}
@@ -135,12 +135,6 @@ class SetForm extends React.Component {
     if (this.state.init) {
       console.log("Modyfing initial state");
       const cards = this.state.cards;
-      // this.state.cards.forEach(elem => {
-      //   cards[elem._id] = {
-      //     term:elem.term,
-      //     definition:elem.definition
-      //   }
-      // })
       console.log("Returning initial state", cards);
       return {
         cards,

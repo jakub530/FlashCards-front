@@ -21,8 +21,6 @@ const SetCard = (props) => {
 
   const deleteSession = async (id) => {
     await sessionService.deleteSession(id);
-    console.log("Deleted Session");
-    await dispatch(sessionActions.fetchSession(id));
     props.onDelete();
   };
 

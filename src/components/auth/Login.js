@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -44,8 +43,6 @@ class Login extends React.Component {
   };
 
   render() {
-    const { loggingIn } = this.props;
-    const { username, password, submitted } = this.state;
     return (
       <Container fluid="md">
         <Card className="my-2 mx-auto w-50">
@@ -87,11 +84,5 @@ class Login extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  const { loggingIn } = state.auth;
-  return {
-    loggingIn,
-  };
-}
 
-export default connect(mapStateToProps)(Login);
+export default connect()(Login);

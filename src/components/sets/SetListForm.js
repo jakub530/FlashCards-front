@@ -45,6 +45,7 @@ class SetListForm extends React.Component {
     return this.props.sets.map((set) => {
       return (
         <SetCard
+          key={set._id}
           title={set.name}
           description={set.description}
           id={set._id}

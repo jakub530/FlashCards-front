@@ -1,21 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { testApi } from "../../actions";
+import { Link } from "react-router-dom";
+
 import Card from "react-bootstrap/Card";
 
-import { userActions } from "../../actions";
 
 class MainMenu extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(userActions.getAll());
-  }
-
-  onClick = () => {
-    console.log(this.props);
-    this.props.testApi();
-  };
-
   render() {
     return (
       <div className="mt-2">

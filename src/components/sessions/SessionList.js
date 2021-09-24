@@ -37,6 +37,7 @@ class SessionList extends React.Component {
     return this.state.sessions.map((session) => {
       return (
         <SessionCard
+          key={session._id}
           title={session.name}
           description={session.description}
           id={session._id}

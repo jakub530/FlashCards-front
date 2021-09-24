@@ -1,11 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
-import history from "../../history";
+import Form from "react-bootstrap/Form";
 
 import { userActions } from "../../actions";
 
@@ -13,7 +12,6 @@ class Register extends React.Component {
   constructor(props) {
     super(props);
 
-    // reset login status
 
     this.state = {
       email: "",
@@ -41,8 +39,6 @@ class Register extends React.Component {
   };
 
   render() {
-    const { loggingIn } = this.props;
-    const { email, userName, password, submitted } = this.state;
     return (
       <Container fluid="md">
         <Card className="my-2 mx-auto w-50">
