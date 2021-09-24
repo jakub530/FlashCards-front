@@ -47,7 +47,12 @@ class SessionSplitter extends React.Component {
               {this.renderColors(this.input)}
             </Row>
           </Container>
-          <Link className="btn btn-primary" to={`/sessions/main/items/${this.props.session._id}`}>View Cards</Link>
+          <Link
+            className="btn btn-primary"
+            to={`/sessions/main/items/${this.props.session._id}`}
+          >
+            View Cards
+          </Link>
         </Card.Body>
       </Card>
     );

@@ -30,14 +30,13 @@ const logout = () => async (dispatch, getState) => {
 };
 
 const register = (email, password, userName) => async (dispatch, getState) => {
+  const { user, error } = await userService.register(email, password, userName);
 
-  const {user, error} = await userService.register(email, password, userName);
-
-  if(user) {
-    dispatch({type:userConstants.LOGIN_SUCCESS, user});
+  if (user) {
+    dispatch({ type: userConstants.LOGIN_SUCCESS, user });
     history.push("/");
   }
-}
+};
 
 const getAll = () => async (dispatch, getState) => {
   dispatch({ type: userConstants.GETALL_REQUEST });
@@ -63,5 +62,5 @@ export const userActions = {
   login,
   logout,
   getAll,
-  register
+  register,
 };

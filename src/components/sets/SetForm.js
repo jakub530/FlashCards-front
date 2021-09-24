@@ -175,7 +175,11 @@ class SetForm extends React.Component {
                 Save
               </button>
             </div>
-            {process.env.NODE_ENV==="development" && <pre style={{ color: "white" }}>{JSON.stringify(values, 0, 2)}</pre>}
+            {process.env.NODE_ENV === "development" && (
+              <pre style={{ color: "white" }}>
+                {JSON.stringify(values, 0, 2)}
+              </pre>
+            )}
           </form>
         )}
       />

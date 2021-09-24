@@ -58,7 +58,9 @@ class SessionDebug extends React.Component {
             </Row>
             <Row className="mt-2">
               <Button
-                onClick={() => this.findAllSessionCards(this.props.session.session._id)}
+                onClick={() =>
+                  this.findAllSessionCards(this.props.session.session._id)
+                }
                 variant="secondary"
               >
                 Find Session Cards
@@ -81,5 +83,5 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   fetchSession: sessionActions.fetchSession,
   evolveSession: sessionActions.evolveSession,
-  findAllSessionCards: sessionCardActions.findAllSessionCards
+  findAllSessionCards: sessionCardActions.findAllSessionCards,
 })(SessionDebug);

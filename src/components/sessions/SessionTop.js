@@ -21,7 +21,7 @@ class SessionTop extends React.Component {
   }
 
   componentDidMount() {
-    console.log("Session Top", this.props)
+    console.log("Session Top", this.props);
     this.props.fetchSession(this.props.idAdress);
   }
 
@@ -46,7 +46,9 @@ class SessionTop extends React.Component {
       <div>
         {this.state.init ? <SessionSplitter /> : "Loading"}
         {this.state.init ? <SessionMain /> : "Loading"}
-        {process.env.NODE_ENV==="development" && <SessionDebug></SessionDebug>}
+        {process.env.NODE_ENV === "development" && (
+          <SessionDebug></SessionDebug>
+        )}
       </div>
     );
   }

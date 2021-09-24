@@ -13,5 +13,5 @@ export default combineReducers({
   sets,
   set,
   session,
-  sessionCard
+  sessionCard,
 });

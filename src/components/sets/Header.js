@@ -13,25 +13,25 @@ class Header extends React.Component {
           {/* {props.title} */}
         </Card.Header>
         <Card.Body>
-            <Form.Group>
-              <Form.Label>Title</Form.Label>
-              <Field
-                component="input"
-                name="set.title"
-                className="form-control"
-                id="exampleFormControlInput1"
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Description</Form.Label>
-              <Field
-                component="textarea"
-                name="set.description"
-                className="form-control"
-                id="exampleFormControlTextarea1"
-                rows="3"
-              />
-            </Form.Group>
+          <Form.Group>
+            <Form.Label>Title</Form.Label>
+            <Field
+              component="input"
+              name="set.title"
+              className="form-control"
+              id="exampleFormControlInput1"
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Description</Form.Label>
+            <Field
+              component="textarea"
+              name="set.description"
+              className="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+            />
+          </Form.Group>
         </Card.Body>
       </Card>
     );

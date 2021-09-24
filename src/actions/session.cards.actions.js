@@ -9,10 +9,13 @@ import { sessionService } from "../services";
 
 const findAllSessionCards = (id) => async (dispatch) => {
   const sessionCards = await sessionService.fetchSessionCards(id);
-//   console.log("Fetched Session Action:", session);
-    dispatch({ type: sessionConstants.FIND_ALL_SESSION_CARDS, payload: sessionCards });
+  //   console.log("Fetched Session Action:", session);
+  dispatch({
+    type: sessionConstants.FIND_ALL_SESSION_CARDS,
+    payload: sessionCards,
+  });
 };
 
 export const sessionCardActions = {
-  findAllSessionCards
+  findAllSessionCards,
 };

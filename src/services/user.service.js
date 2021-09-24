@@ -20,7 +20,7 @@ const logout = () => {
   console.log("Removing from local storage");
 };
 
-const register =async (email, password, name) => {
+const register = async (email, password, name) => {
   // remove user from local storage to log user out
   const response = await connect.post("/users", { email, password, name });
 
@@ -57,5 +57,5 @@ export const userService = {
   login,
   logout,
   getAll,
-  register
+  register,
 };

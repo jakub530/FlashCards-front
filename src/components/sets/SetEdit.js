@@ -3,13 +3,7 @@ import SetForm from "./SetForm";
 
 class SetEdit extends React.Component {
   render() {
-    return (
-      <SetForm
-        fetchData={true}
-        submit="patch"
-        id={this.props.idAdress}
-      />
-    );
+    return <SetForm fetchData={true} submit="patch" id={this.props.idAdress} />;
   }
 }
 

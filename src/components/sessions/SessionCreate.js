@@ -25,9 +25,9 @@ class SessionCreate extends React.Component {
       sets: this.state.sets.selected,
       session: { name: this.state.name, description: this.state.description },
     });
-    console.log("Created a session", session)
+    console.log("Created a session", session);
     console.log("Session Created");
-    history.push(`/sessions/main/view/${session._id}`)
+    history.push(`/sessions/main/view/${session._id}`);
   };
 
   updateName = (event) => {

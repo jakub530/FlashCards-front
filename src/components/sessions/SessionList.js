@@ -30,8 +30,8 @@ class SessionList extends React.Component {
   //     console.log("Setlist sets", this.props.sets)
   //   }
   onDelete = () => {
-    this.waitForData()
-  }
+    this.waitForData();
+  };
 
   renderSession = () => {
     return this.state.sessions.map((session) => {

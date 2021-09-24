@@ -17,14 +17,14 @@ class Register extends React.Component {
 
     this.state = {
       email: "",
-      userName:"",
+      userName: "",
       password: "",
       submitted: false,
     };
   }
 
   handleChange = (e) => {
-    console.log(this.state)
+    console.log(this.state);
     const { name, value } = e.target;
     console.log(value);
     this.setState({ [name]: value });
@@ -45,51 +45,49 @@ class Register extends React.Component {
     const { email, userName, password, submitted } = this.state;
     return (
       <Container fluid="md">
- 
+        <Card className="my-2 mx-auto w-50">
+          <Card.Header>
+            <h2>Sign Up</h2>
+          </Card.Header>
+          <Card.Body>
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>User Name</Form.Label>
+                <Form.Control
+                  name="userName"
+                  type="text"
+                  placeholder="Enter User Name"
+                  onChange={this.handleChange}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control
+                  name="email"
+                  type="email"
+                  placeholder="Enter email"
+                  onChange={this.handleChange}
+                />
+                <Form.Text className="text-muted">
+                  We'll never share your email with anyone else.
+                </Form.Text>
+              </Form.Group>
 
-      <Card className="my-2 mx-auto w-50">
-        <Card.Header>
-        <h2>Sign Up</h2>
-        </Card.Header>
-        <Card.Body>
-        <Form onSubmit={this.handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>User Name</Form.Label>
-            <Form.Control
-              name="userName"
-              type="text"
-              placeholder="Enter User Name"
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              name="email"
-              type="email"
-              placeholder="Enter email"
-              onChange={this.handleChange}
-            />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              name="password"
-              placeholder="Password"
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Create account
-          </Button>
-        </Form>
-        </Card.Body>
-      </Card>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  onChange={this.handleChange}
+                />
+              </Form.Group>
+              <Button variant="primary" type="submit">
+                Create account
+              </Button>
+            </Form>
+          </Card.Body>
+        </Card>
       </Container>
     );
   }

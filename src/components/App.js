@@ -22,48 +22,47 @@ import RouteRequiresLogin from "./auth/RouteRequiresLogin";
 import SessionItemList from "./sessions/SessionItemList";
 
 class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <div className="container">
+          <Router history={history}>
+            <NavBar></NavBar>
+            <Switch>
+              <RouteRequiresLogin exact path="/">
+                <MainMenu />
+              </RouteRequiresLogin>
+              <RouteRequiresLogin exact path="/sets">
+                <SetList />
+              </RouteRequiresLogin>
+              <RouteRequiresLogin exact path="/sessions">
+                <SessionList />
+              </RouteRequiresLogin>
+              <RouteRequiresLogin exact path="/sessions/create">
+                <SessionCreate />
+              </RouteRequiresLogin>
+              <RouteRequiresLogin exact path="/sessions/main/view/:id">
+                <SessionTop />
+              </RouteRequiresLogin>
+              <RouteRequiresLogin exact path="/sets/edit/:id">
+                <SetEdit />
+              </RouteRequiresLogin>
+              <RouteRequiresLogin exact path="/sets/create">
+                <SetCreate />
+              </RouteRequiresLogin>
+              <RouteRequiresLogin exact path="/sessions/main/items/:id">
+                <SessionItemList />
+              </RouteRequiresLogin>
 
-  render(){
-  return (
-    <div>
-      <div className="container">
-        <Router history={history}>
-          <NavBar></NavBar>
-          <Switch>
-            <RouteRequiresLogin exact path="/">
-              <MainMenu/>
-            </RouteRequiresLogin>
-            <RouteRequiresLogin exact path="/sets">
-              <SetList/>
-            </RouteRequiresLogin>
-            <RouteRequiresLogin exact path="/sessions">
-              <SessionList/>
-            </RouteRequiresLogin>
-            <RouteRequiresLogin exact path="/sessions/create">
-              <SessionCreate/>
-            </RouteRequiresLogin>
-            <RouteRequiresLogin exact path="/sessions/main/view/:id">
-              <SessionTop/>
-            </RouteRequiresLogin>
-            <RouteRequiresLogin exact path="/sets/edit/:id">
-              <SetEdit/>
-            </RouteRequiresLogin>
-            <RouteRequiresLogin exact path="/sets/create">
-              <SetCreate/>
-            </RouteRequiresLogin>
-            <RouteRequiresLogin exact path="/sessions/main/items/:id">
-              <SessionItemList/>
-            </RouteRequiresLogin>
-            
-            <Route path="/login" exact component={Login} />
-            <Route path="/register" exact component={Register} />
-          </Switch>
-        </Router>
+              <Route path="/login" exact component={Login} />
+              <Route path="/register" exact component={Register} />
+            </Switch>
+          </Router>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
-};
 
 document.body.style = "background: #334756";
 

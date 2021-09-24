@@ -38,14 +38,20 @@ const createSession = async (data) => {
 
 const deleteSession = async (id) => {
   console.log("Deleting Session");
-  const session = await utilityService.handleRequest(`/session/${id}`, "delete");
+  const session = await utilityService.handleRequest(
+    `/session/${id}`,
+    "delete"
+  );
   console.log("Deleted Session: ", session);
   return session;
 };
 
 const fetchSessionCards = async (id) => {
   console.log("Find Session Cards");
-  const sessionCards = await utilityService.handleRequest(`/session/cards/${id}`, "get");
+  const sessionCards = await utilityService.handleRequest(
+    `/session/cards/${id}`,
+    "get"
+  );
   console.log("Found Cards: ", sessionCards);
   return sessionCards;
 };

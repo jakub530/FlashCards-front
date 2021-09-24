@@ -75,19 +75,18 @@ class NavBar extends React.Component {
             {/* Needed to put login on the right side apparently */}
             <Nav className="navbar-nav me-auto mb-2 mb-lg-0"></Nav>
             <Nav>
-              
               {this.state.loggedIn ? (
                 <Link className="nav-link" onClick={this.logOut} to="/">
                   Logout
                 </Link>
               ) : (
                 <React.Fragment>
-                <Link className="nav-link" to="/login">
-                  Login
-                </Link>
-                <Link className="nav-link" to="/register">
-                  Sign Up
-                </Link>
+                  <Link className="nav-link" to="/login">
+                    Login
+                  </Link>
+                  <Link className="nav-link" to="/register">
+                    Sign Up
+                  </Link>
                 </React.Fragment>
               )}
             </Nav>
