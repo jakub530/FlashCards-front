@@ -1,11 +1,9 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import "./Session.css";
 
 import Carousel from "react-bootstrap/Carousel";
-import Card from "react-bootstrap/Card";
-import classNames from "classnames";
+
 import { sessionActions } from "../../actions";
 import SessionCarouselItem from "./SessionCarouselItem";
 

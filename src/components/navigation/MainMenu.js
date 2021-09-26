@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import Card from "react-bootstrap/Card";
 
-
 class MainMenu extends React.Component {
   render() {
     return (

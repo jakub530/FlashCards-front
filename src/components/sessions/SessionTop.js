@@ -1,18 +1,11 @@
 import React from "react";
-
 import { connect } from "react-redux";
-import "./Session.css";
 
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
-// import FloatingLabel from 'react-bootstrap/FloatingLabel'
-import { sessionService } from "../../services";
 import { sessionActions } from "../../actions";
+
+import SessionDebug from "./SessionDebug";
 import SessionMain from "./SessionMain";
 import SessionSplitter from "./SessionSplitter";
-import SessionDebug from "./SessionDebug";
 
 class SessionTop extends React.Component {
   constructor(props) {
@@ -31,15 +24,6 @@ class SessionTop extends React.Component {
       this.setState({ init: true });
     }
   }
-
-  //   render() {
-  //     return (
-  //         <div>
-  //             {this.state.init ? <SessionMain/> : <div>Waiting For Data</div>}
-  //             Session Top
-  //         </div>
-  //     );
-  //   };
 
   render() {
     return (

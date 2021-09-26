@@ -29,10 +29,9 @@ const register = (email, password, userName) => async (dispatch, getState) => {
     dispatch({ type: userConstants.LOGIN_SUCCESS, user });
     history.push("/");
   } else {
-    console.log("Error while registering", error)
+    console.log("Error while registering", error);
   }
 };
-
 
 export const userActions = {
   login,

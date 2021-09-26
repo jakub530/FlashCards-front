@@ -22,6 +22,8 @@ const handleRequest = async (endpoint, request_type, payload = null) => {
         case "delete":
           response = await connect.delete(endpoint, config);
           break;
+        default:
+          break;
       }
       console.log("Request reqsponse:", response);
       return response.data;

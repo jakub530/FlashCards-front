@@ -1,17 +1,16 @@
 import React from "react";
-import { utility } from "./utility";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import { connect } from "react-redux";
-import "./Session.css";
-import { Link } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+
+import { utility } from "./utility";
 
 class SessionSplitter extends React.Component {
   renderColors(input) {
-    console.log("Session splitter", this.props);
     if (!this.props.session) {
       return <div>No buckets</div>;
     }

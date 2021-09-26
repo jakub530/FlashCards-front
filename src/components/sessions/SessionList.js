@@ -1,11 +1,9 @@
 import React from "react";
-
-import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import SessionCard from "./SessionCard";
-import SessionSplitter from "./SessionSplitter";
 
 import { sessionService } from "../../services";
+
+import SessionCard from "./SessionCard";
 
 class SessionList extends React.Component {
   componentDidMount() {
@@ -19,16 +17,9 @@ class SessionList extends React.Component {
 
   waitForData = async () => {
     const sessions = await sessionService.fetchSessions();
-    console.log(sessions);
     this.setState({ sessions });
   };
 
-  //   componentDidUpdate()
-  //   {
-
-  //     this.props.dispatch(setActions.listSets());
-  //     console.log("Setlist sets", this.props.sets)
-  //   }
   onDelete = () => {
     this.waitForData();
   };
@@ -61,10 +52,6 @@ class SessionList extends React.Component {
               >
                 Create a session
               </Link>
-              {/* <SessionSplitter></SessionSplitter> */}
-              {/* <Button variant="primary" size="lg" onClick={this.createCard}>
-                  Add Term
-                </Button> */}
             </div>
           </div>
         ) : (

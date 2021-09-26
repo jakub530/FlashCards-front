@@ -1,9 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { setService } from "../../services";
-import { setsActions } from "../../actions";
+
 import SetCard from "./SetCard";
+
+import { setsActions } from "../../actions";
 
 class SetListForm extends React.Component {
   constructor(props) {
@@ -19,24 +20,18 @@ class SetListForm extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(setsActions.listSets());
-    console.log("SetListForm Sets:", this.props.sets);
   }
 
   componentDidUpdate() {
-    console.log("SetListForm State:", this.state);
     this.props.onListUpdate(this.state);
   }
 
   selectSet = (id) => {
-    console.log("Changed");
-    console.log(id);
     if (this.state.selected.includes(id)) {
-      console.log("Deleting");
       this.setState({
         selected: this.state.selected.filter((elem) => elem !== id),
       });
     } else {
-      console.log("Adding");
       this.setState({ selected: [...this.state.selected, id] });
     }
   };

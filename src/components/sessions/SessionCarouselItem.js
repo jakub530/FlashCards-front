@@ -1,20 +1,16 @@
 import React from "react";
-
-import { connect } from "react-redux";
-import "./Session.css";
-
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
-import Card from "react-bootstrap/Card";
 import classNames from "classnames";
+
+import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
 
 class SessionCarouselItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = { definition: "" };
-    // this.state = { sets: [], name: "", description: "" };
   }
 
   resolveStatus = () => {

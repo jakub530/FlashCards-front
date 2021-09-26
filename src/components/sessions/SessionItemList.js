@@ -1,11 +1,10 @@
 import React from "react";
+
 import { connect } from "react-redux";
-import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 
 import { sessionCardActions } from "../../actions";
-import { sessionCard } from "../../reducers/session.card.reducer";
 
 class SessionItemList extends React.Component {
   componentDidMount() {
@@ -52,7 +51,7 @@ class SessionItemList extends React.Component {
               <th>Times Seen</th>
             </tr>
           </thead>
-          {this.props.sessionCards.length != 0
+          {this.props.sessionCards.length !== 0
             ? this.renderTable()
             : "No data to show"}
         </Table>

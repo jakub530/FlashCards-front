@@ -1,5 +1,4 @@
 import { setConstants } from "../constants";
-import _ from "lodash";
 
 const init_state = {};
 

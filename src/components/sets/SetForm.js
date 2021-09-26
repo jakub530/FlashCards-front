@@ -99,7 +99,7 @@ class SetForm extends React.Component {
           <TermCard
             id={_id}
             key={_id}
-            index={index+1}
+            index={index + 1}
             term={term}
             definition={definition}
             onDelete={() => this.deleteCard(_id)}

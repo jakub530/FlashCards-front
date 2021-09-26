@@ -1,17 +1,14 @@
 import React from "react";
 import { Field } from "react-final-form";
+
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 class Header extends React.Component {
   render() {
     return (
       <Card className="mt-3 mb-2">
-        <Card.Header as="h5">
-          Title & Description
-          {/* {props.title} */}
-        </Card.Header>
+        <Card.Header as="h5">Title & Description</Card.Header>
         <Card.Body>
           <Form.Group>
             <Form.Label>Title</Form.Label>

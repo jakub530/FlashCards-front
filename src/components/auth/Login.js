@@ -84,5 +84,4 @@ class Login extends React.Component {
   }
 }
 
-
 export default connect()(Login);

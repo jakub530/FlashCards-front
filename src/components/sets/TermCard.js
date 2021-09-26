@@ -1,11 +1,11 @@
 import React from "react";
 import { Field } from "react-final-form";
-import { deleteTerm } from "../../actions";
 import { connect } from "react-redux";
+
 import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 class TermCard extends React.Component {
   render() {

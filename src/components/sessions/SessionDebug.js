@@ -1,9 +1,6 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import "./Session.css";
-
-// import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import { sessionActions, sessionCardActions } from "../../actions";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -11,13 +8,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 class SessionDebug extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   evolveSession(update) {
-    console.log(this.props.session.session._id);
-    console.log(update);
     const id = this.props.session.session._id;
     this.props.evolveSession(id, update);
   }
