@@ -14,19 +14,14 @@ class SessionCreate extends React.Component {
   }
 
   onListUpdate = (idList) => {
-    console.log("SessionCreate:", idList);
     this.setState({ sets: idList });
   };
 
   createSession = async () => {
-    console.log("State", this.state);
-    console.log(this.state.sets.selected);
     const session = await this.props.createSession({
       sets: this.state.sets.selected,
       session: { name: this.state.name, description: this.state.description },
     });
-    console.log("Created a session", session);
-    console.log("Session Created");
     history.push(`/sessions/main/view/${session._id}`);
   };
 

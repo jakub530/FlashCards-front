@@ -32,11 +32,15 @@ $theme-colors: (
 
 @import "node_modules/bootstrap/scss/bootstrap";
 
-.even {
+tr.even {
   background-color: $darker;
 }
 
-.odd {
+.sessionItemList {
+  color:white;
+}
+
+tr.odd {
   background-color: #343a40;
 }
 

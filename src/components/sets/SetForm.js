@@ -34,7 +34,6 @@ class SetForm extends React.Component {
   }
 
   objectToArray(cards) {
-    console.log("Mapping object to array", cards);
     const ids = Object.keys(cards);
     const cardList = [];
     ids.forEach((_id) => {
@@ -62,18 +61,12 @@ class SetForm extends React.Component {
         _id: elem._id,
       };
     });
-    console.log("stateCards:", stateCards);
     const cards = [];
     stateCards.forEach(({ _id, newCard }) => {
       const card = { ...formValues.cards[_id], _id };
       cards.push(card);
-      // if(newCard)
-      // {
-      //   this.setState({cards:[...this.state.cards.filter(el => el._id !== _id), {_id:ObjectID().toHexString(), newCard:false}]})
-      // }
     });
 
-    console.log("Processed cards:", cards);
     return cards;
   };
 
@@ -90,10 +83,8 @@ class SetForm extends React.Component {
   };
 
   renderCards() {
-    console.log("Rendering Cards:", this.state.cards);
     if (this.state.cards) {
       const cardList = this.objectToArray(this.state.cards);
-      console.log("Card list", cardList);
       return cardList.map(({ _id, term, definition }, index) => {
         return (
           <TermCard
@@ -110,32 +101,24 @@ class SetForm extends React.Component {
   }
 
   deleteCard = (id) => {
-    console.log("Deleting card with id:", id);
     this.setState({ cards: _.omit(this.state.cards, id) });
   };
 
   createCard = () => {
-    console.log("Creating Card", this.state.cards);
     const newId = ObjectID().toHexString();
     this.setState({
       cards: { ...this.state.cards, [newId]: { newCard: true } },
     });
-    console.log("Set after new card", this.state.cards);
   };
 
   waitForData = async () => {
-    console.log("Fetching Terms");
     await this.fetchTerms();
-    console.log("Fetched terms");
     this.setState({ init: true });
   };
 
   readInitialState = () => {
-    console.log("Reading initial state", this.state);
     if (this.state.init) {
-      console.log("Modyfing initial state");
       const cards = this.state.cards;
-      console.log("Returning initial state", cards);
       return {
         cards,
         set: {

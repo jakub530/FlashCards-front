@@ -20,6 +20,7 @@ class SessionSplitter extends React.Component {
     return utility.colors(buckets.length).map((term, index) => {
       return (
         <Col
+          key={index}
           className={
             index !== this.props.session.state.currentBucket
               ? "text-center font-weight-bold border bucket inactiveBucket"

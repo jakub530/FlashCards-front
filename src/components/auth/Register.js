@@ -21,9 +21,7 @@ class Register extends React.Component {
   }
 
   handleChange = (e) => {
-    console.log(this.state);
     const { name, value } = e.target;
-    console.log(value);
     this.setState({ [name]: value });
   };
 

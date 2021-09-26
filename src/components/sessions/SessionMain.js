@@ -14,19 +14,14 @@ class SessionMain extends React.Component {
   }
 
   componentDidMount() {
-    console.log("Session Main", this.props.cards);
     this.setState({ activeIndex: this.props.previousCards.length });
   }
 
-  componentDidUpdate() {
-    console.log("Session Main Update", this.props.cards);
-  }
 
   renderPreviousItems() {
-    console.log("Rendering previous Cards", this.props.previousCards);
-    return this.props.previousCards.map((card) => {
+    return this.props.previousCards.map((card,index) => {
       return (
-        <Carousel.Item>
+        <Carousel.Item key={index}>
           <SessionCarouselItem
             term={card.term}
             definition={card.definition}
@@ -42,9 +37,6 @@ class SessionMain extends React.Component {
   }
 
   evolveSession = async (update) => {
-    console.log("Session Main Evolution", this.props);
-    console.log(this.props.id);
-    console.log(update);
     const id = this.props.id;
     await this.props.evolveSession(id, update);
   };
@@ -54,7 +46,7 @@ class SessionMain extends React.Component {
       if (this.state.userInput === this.props.currentCard.definition) {
         this.evolveSession("correct");
       } else if (this.state.userInput === "") {
-        console.log("Please input something");
+
       } else {
         this.evolveSession("false");
       }
@@ -62,7 +54,6 @@ class SessionMain extends React.Component {
       this.props.itemFlag === "correct" ||
       this.props.itemFlag === "corrected"
     ) {
-      console.log("Evolving Next");
       await this.evolveSession("next");
 
       this.setState({
@@ -70,6 +61,7 @@ class SessionMain extends React.Component {
         userInput: "",
       });
     }
+    this.setState({ userInput: "" });
   };
 
   renderCurrentItem() {
@@ -110,7 +102,6 @@ class SessionMain extends React.Component {
   };
 
   handleSelect = (selectedIndex, e) => {
-    console.log(selectedIndex);
     if (selectedIndex === 1 + this.props.previousCards.length) {
       return this.submitCard();
     } else {
@@ -140,7 +131,6 @@ class SessionMain extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("Session Main State", state);
 
   if (!state.session) {
     return {

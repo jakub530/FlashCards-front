@@ -15,15 +15,12 @@ const SetCard = (props) => {
   const dispatch = useDispatch();
 
   const fetchSet = async (id) => {
-    console.log("Clicked fetch set");
-
     await dispatch(setActions.fetchSet(id));
     history.push(`/sets/edit/${props.id}`);
   };
 
   const deleteSet = async (id) => {
     await setService.deleteSet(id);
-    console.log("Deleted Set");
     dispatch(setsActions.listSets());
   };
 

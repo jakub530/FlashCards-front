@@ -1,4 +1,3 @@
-import { authToken } from "../utility";
 import { connect } from "../api/flashcards";
 
 const login = async (email, password) => {
@@ -17,7 +16,6 @@ const login = async (email, password) => {
 const logout = () => {
   // remove user from local storage to log user out
   localStorage.removeItem("user");
-  console.log("Removing from local storage");
 };
 
 const register = async (email, password, name) => {
@@ -34,28 +32,9 @@ const register = async (email, password, name) => {
   }
 };
 
-const getAll = async () => {
-  // console.log("auth token", authToken().Authorization)
-  let response;
-
-  if (authToken().Authorization) {
-    const config = {
-      headers: { Authorization: authToken().Authorization },
-    };
-    try {
-      response = await connect.get("/users/me", config);
-    } catch {
-      console.log(response);
-      return null;
-    }
-  } else {
-    console.log("You are not logged in");
-  }
-};
 
 export const userService = {
   login,
   logout,
-  getAll,
   register,
 };

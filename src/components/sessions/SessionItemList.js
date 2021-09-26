@@ -19,7 +19,7 @@ class SessionItemList extends React.Component {
   renderTable() {
     return this.props.sessionCards.map((item, ind) => {
       return (
-        <tr className={ind % 2 === 0 ? "even" : "odd"}>
+        <tr key={ind} className={ind % 2 === 0 ? "even" : "odd"}>
           <td>{ind + 1}</td>
           <td>{item.term}</td>
           <td>{item.definition}</td>
@@ -40,7 +40,7 @@ class SessionItemList extends React.Component {
         >
           Return to Session
         </Link>
-        <Table variant="dark">
+        <Table  hover className="sessionItemList">
           <thead>
             <tr>
               <th>#</th>
@@ -51,9 +51,11 @@ class SessionItemList extends React.Component {
               <th>Times Seen</th>
             </tr>
           </thead>
+          <tbody>
           {this.props.sessionCards.length !== 0
             ? this.renderTable()
-            : "No data to show"}
+            : <tr></tr>}
+          </tbody>
         </Table>
       </div>
     );

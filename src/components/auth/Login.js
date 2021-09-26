@@ -24,7 +24,6 @@ class Login extends React.Component {
 
   handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(value);
     this.setState({ [name]: value });
   };
 
@@ -35,7 +34,6 @@ class Login extends React.Component {
     const { dispatch } = this.props;
     if (email && password) {
       await dispatch(userActions.login(email, password));
-      console.log("Redirect", this.props);
       if (!this.props.noRedirect) {
         history.push("/");
       }

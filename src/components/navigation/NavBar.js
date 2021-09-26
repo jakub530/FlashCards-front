@@ -18,13 +18,9 @@ class NavBar extends React.Component {
   };
 
   componentDidMount() {
-    console.log(this.props);
-    console.log("NavBar Update", this.props);
     const auth = this.props.auth;
 
     if (auth && "loggedIn" in auth && auth.loggedIn === true) {
-      console.log("auth logged in is true");
-      console.log("Auth", auth);
       if (this.state.loggedIn === false) {
         this.setState({ loggedIn: true });
       }
@@ -36,13 +32,9 @@ class NavBar extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log(this.props);
-    console.log("NavBar Update", this.props);
     const auth = this.props.auth;
 
     if (auth && "loggedIn" in auth && auth.loggedIn === true) {
-      console.log("auth logged in is true");
-      console.log("Auth", auth);
       if (this.state.loggedIn === false) {
         this.setState({ loggedIn: true });
       }

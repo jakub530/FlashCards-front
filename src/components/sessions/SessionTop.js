@@ -14,12 +14,10 @@ class SessionTop extends React.Component {
   }
 
   componentDidMount() {
-    console.log("Session Top", this.props);
     this.props.fetchSession(this.props.idAdress);
   }
 
   componentDidUpdate() {
-    console.log("Update component session top", this.props.session);
     if (!this.state.init && this.props.session.state) {
       this.setState({ init: true });
     }
@@ -39,7 +37,6 @@ class SessionTop extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("SessionTop State:", state);
   return {
     session: state.session.session,
   };

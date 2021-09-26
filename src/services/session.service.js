@@ -1,58 +1,45 @@
 import { utilityService } from "./utility.service";
 
 const fetchSessions = async () => {
-  console.log("Fetching Sessions");
   const sessions = await utilityService.handleRequest("/session", "get");
-  console.log("Fetched Sessions: ", sessions);
   return sessions;
 };
 
 const fetchSession = async (id) => {
-  console.log("Fetching Session");
   const sessions = await utilityService.handleRequest(
     `/session/state/${id}`,
     "get"
   );
-  console.log("Fetched Session Service: ", sessions);
   return sessions;
 };
 
 const evolveSession = async (id, update) => {
-  console.log("Evolving Session", id, update);
   const sessions = await utilityService.handleRequest(
     `/session/evolve/${id}`,
     "post",
     { update }
   );
-  console.log("Evolved Session: ", sessions);
   return sessions;
 };
 
 const createSession = async (data) => {
-  console.log("Creating Session");
-  console.log("Data:", data);
   const session = await utilityService.handleRequest(`/session`, "post", data);
-  console.log("Created Session: ", session);
   return session;
 };
 
 const deleteSession = async (id) => {
-  console.log("Deleting Session");
   const session = await utilityService.handleRequest(
     `/session/${id}`,
     "delete"
   );
-  console.log("Deleted Session: ", session);
   return session;
 };
 
 const fetchSessionCards = async (id) => {
-  console.log("Find Session Cards");
   const sessionCards = await utilityService.handleRequest(
     `/session/cards/${id}`,
     "get"
   );
-  console.log("Found Cards: ", sessionCards);
   return sessionCards;
 };
 

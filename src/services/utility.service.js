@@ -3,7 +3,12 @@ import { connect } from "../api/flashcards";
 
 const handleRequest = async (endpoint, request_type, payload = null) => {
   let response;
-
+  if(process.env.NODE_ENV === "development") {
+    console.log("Sending Request")
+    console.log("Endpoint:", endpoint)
+    console.log("Request Type:", request_type)
+    console.log("Payload:", payload)
+  }
   if (authToken().Authorization) {
     const config = {
       headers: { Authorization: authToken().Authorization },
@@ -25,7 +30,9 @@ const handleRequest = async (endpoint, request_type, payload = null) => {
         default:
           break;
       }
-      console.log("Request reqsponse:", response);
+      if(process.env.NODE_ENV === "development") {
+        console.log("Received Response:", response);
+      }
       return response.data;
     } catch {
       console.log(response);
