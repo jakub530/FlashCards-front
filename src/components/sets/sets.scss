@@ -20,7 +20,7 @@ $theme-colors: (
   "red": #dc3545,
   "orange": #fd7e14,
   "yellow": #ffc107,
-  "green": #28a745,
+  "green": $green,
   "teal": #20c997,
   "cyan": #17a2b8,
   "white": #fff,
@@ -37,7 +37,7 @@ tr.even {
 }
 
 .sessionItemList {
-  color:white;
+  color: white;
 }
 
 tr.odd {

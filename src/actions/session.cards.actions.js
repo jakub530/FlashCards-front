@@ -1,7 +1,6 @@
 import { sessionConstants } from "../constants";
 import { sessionService } from "../services";
 
-
 const findAllSessionCards = (id) => async (dispatch) => {
   const sessionCards = await sessionService.fetchSessionCards(id);
   dispatch({

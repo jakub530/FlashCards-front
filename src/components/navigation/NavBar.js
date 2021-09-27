@@ -51,7 +51,12 @@ class NavBar extends React.Component {
         <Container>
           <Navbar.Brand>
             <Link className="navbar-brand" to="/">
-              FlashCards - {process.env.NODE_ENV}
+              <img
+                src={process.env.PUBLIC_URL + "/logo.png"}
+                alt="logo"
+                style={{ width: "40px" }}
+              />
+              {"  "}FlashCards - {process.env.NODE_ENV}
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

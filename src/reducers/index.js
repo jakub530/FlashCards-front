@@ -3,6 +3,7 @@ import { auth } from "./auth.reducer";
 import { sets } from "./sets.reducer";
 import { set } from "./set.reducer";
 import { session } from "./session.reducer";
+import { alert } from "./alert.reducer";
 import { sessionCard } from "./session.card.reducer";
 
 export default combineReducers({
@@ -11,4 +12,5 @@ export default combineReducers({
   set,
   session,
   sessionCard,
+  alert,
 });

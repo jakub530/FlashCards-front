@@ -44,7 +44,7 @@ class Register extends React.Component {
           </Card.Header>
           <Card.Body>
             <Form onSubmit={this.handleSubmit}>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Group className="mb-3">
                 <Form.Label>User Name</Form.Label>
                 <Form.Control
                   name="userName"
@@ -53,7 +53,7 @@ class Register extends React.Component {
                   onChange={this.handleChange}
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Group className="mb-3">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
                   name="email"
@@ -66,7 +66,7 @@ class Register extends React.Component {
                 </Form.Text>
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Group className="mb-3">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   type="password"

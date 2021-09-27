@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import history from "../../history";
-import { sessionActions } from "../../actions";
+import { sessionActions, setsActions } from "../../actions";
 import Form from "react-bootstrap/Form";
 
 class SessionCreate extends React.Component {
@@ -12,6 +12,15 @@ class SessionCreate extends React.Component {
     super(props);
     this.state = { sets: [], name: "", description: "" };
   }
+
+  componentDidMount() {
+    this.getSets()
+  }
+
+  getSets = async() => {
+    await this.props.fetchSets()
+  }
+
 
   onListUpdate = (idList) => {
     this.setState({ sets: idList });
@@ -36,60 +45,74 @@ class SessionCreate extends React.Component {
   render() {
     return (
       <div>
-        <Card className="mt-3" style={{ backgroundColor: "#505C70" }}>
-          <Card.Title
-            className="text-center mt-3 py-2 mx-3 font-size:40px"
-            style={{ color: "white", backgroundColor: "#082032" }}
-          >
-            <h4>Name and Description</h4>
-          </Card.Title>
-          <Card.Body>
-            <Form>
-              <Form.Group>
-                <Form.Label>Title</Form.Label>
-                <Form.Control
-                  component="input"
-                  value={this.state.name}
-                  onChange={this.updateName}
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Description</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows="3"
-                  value={this.state.description}
-                  onChange={this.updateDescription}
-                />
-              </Form.Group>
-            </Form>
-          </Card.Body>
-        </Card>
+        {this.props.allSets.length === 0 ? (
+          <SetListForm  noCardMessage="You have to create a set before creating a session" onListUpdate={this.onListUpdate} />
+        ) : (
+          <div>
+            {this.props.allSets.length}
+            <Card className="mt-3" style={{ backgroundColor: "#505C70" }}>
+              <Card.Title
+                className="text-center mt-3 py-2 mx-3 font-size:40px"
+                style={{ color: "white", backgroundColor: "#082032" }}
+              >
+                <h4>Name and Description</h4>
+              </Card.Title>
+              <Card.Body>
+                <Form>
+                  <Form.Group>
+                    <Form.Label>Title</Form.Label>
+                    <Form.Control
+                      component="input"
+                      value={this.state.name}
+                      onChange={this.updateName}
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      rows="3"
+                      value={this.state.description}
+                      onChange={this.updateDescription}
+                    />
+                  </Form.Group>
+                </Form>
+              </Card.Body>
+            </Card>
 
-        <Card className="mt-3" style={{ backgroundColor: "#505C70" }}>
-          <Card.Title
-            className="text-center mt-3 py-2 mx-3 font-size:40px"
-            style={{ color: "white", backgroundColor: "#082032" }}
-          >
-            <h4>Select Sets To Add To Your Session</h4>
-          </Card.Title>
-          <Card.Body>
-            <SetListForm select onListUpdate={this.onListUpdate} />
-          </Card.Body>
-        </Card>
-        <Button
-          variant="primary"
-          size="lg"
-          className="mt-3"
-          onClick={this.createSession}
-        >
-          Create Session
-        </Button>
+            <Card className="mt-3" style={{ backgroundColor: "#505C70" }}>
+              <Card.Title
+                className="text-center mt-3 py-2 mx-3 font-size:40px"
+                style={{ color: "white", backgroundColor: "#082032" }}
+              >
+                <h4>Select Sets To Add To Your Session</h4>
+              </Card.Title>
+              <Card.Body>
+                <SetListForm select onListUpdate={this.onListUpdate} />
+              </Card.Body>
+            </Card>
+            <Button
+              variant="primary"
+              size="lg"
+              className="mt-3"
+              onClick={this.createSession}
+            >
+              Create Session
+            </Button>
+          </div>
+        )}
       </div>
     );
   }
 }
 
-export default connect(null, { createSession: sessionActions.createSession })(
+const mapStateToProps = (state) => {
+  return {
+    allSets: Object.values(state.sets),
+  };
+};
+
+
+export default connect(mapStateToProps, { createSession: sessionActions.createSession, fetchSets: setsActions.listSets })(
   SessionCreate
 );

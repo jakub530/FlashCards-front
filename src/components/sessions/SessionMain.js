@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import Carousel from "react-bootstrap/Carousel";
 
-import { sessionActions } from "../../actions";
+import { alertActions, sessionActions } from "../../actions";
 import SessionCarouselItem from "./SessionCarouselItem";
 
 class SessionMain extends React.Component {
@@ -17,9 +17,8 @@ class SessionMain extends React.Component {
     this.setState({ activeIndex: this.props.previousCards.length });
   }
 
-
   renderPreviousItems() {
-    return this.props.previousCards.map((card,index) => {
+    return this.props.previousCards.map((card, index) => {
       return (
         <Carousel.Item key={index}>
           <SessionCarouselItem
@@ -45,17 +44,18 @@ class SessionMain extends React.Component {
     if (this.props.itemFlag === "pending" || this.props.itemFlag === "false") {
       if (this.state.userInput === this.props.currentCard.definition) {
         this.evolveSession("correct");
+        this.props.alertSuccess("Correct Answer");
       } else if (this.state.userInput === "") {
-
       } else {
         this.evolveSession("false");
+        this.props.alertError("Incorrect Answer");
       }
     } else if (
       this.props.itemFlag === "correct" ||
       this.props.itemFlag === "corrected"
     ) {
       await this.evolveSession("next");
-
+      this.props.alertClear();
       this.setState({
         activeIndex: this.props.previousCards.length,
         userInput: "",
@@ -131,7 +131,6 @@ class SessionMain extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-
   if (!state.session) {
     return {
       itemFlag: "pending",
@@ -150,4 +149,7 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   evolveSession: sessionActions.evolveSession,
+  alertSuccess: alertActions.success,
+  alertError: alertActions.error,
+  alertClear: alertActions.clear,
 })(SessionMain);

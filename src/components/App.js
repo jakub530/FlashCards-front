@@ -4,30 +4,51 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 import { connect } from "react-redux";
+import { Router, Route, Switch } from "react-router-dom";
 
+import Alert from "react-bootstrap/Alert";
+
+import SetCreate from "./sets/SetCreate";
+import SetEdit from "./sets/SetEdit";
+import SetList from "./sets/SetList";
+
+import SessionCreate from "./sessions/SessionCreate";
+import SessionItemList from "./sessions/SessionItemList";
 import SessionList from "./sessions/SessionList";
 import SessionTop from "./sessions/SessionTop";
-import SetEdit from "./sets/SetEdit";
-import SetCreate from "./sets/SetCreate";
-import MainMenu from "./navigation/MainMenu";
-import SetList from "./sets/SetList";
-import SessionCreate from "./sessions/SessionCreate";
-// import Session from './sessions/SessionSplitter';
-import Login from "./auth/Login";
-import Register from "./auth/Register";
+
+import { alertActions } from "../actions";
 import history from "../history";
-import { Router, Route, Switch } from "react-router-dom";
-import NavBar from "./navigation/NavBar";
 import RouteRequiresLogin from "./auth/RouteRequiresLogin";
-import SessionItemList from "./sessions/SessionItemList";
+
+import Login from "./auth/Login";
+import NavBar from "./navigation/NavBar";
+import MainMenu from "./navigation/MainMenu";
+import Register from "./auth/Register";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    const { dispatch } = this.props;
+    history.listen((location, action) => {
+      // clear alert on location change
+      dispatch(alertActions.clear());
+    });
+  }
+
   render() {
+    const alert = this.props.alert;
     return (
       <div>
         <div className="container">
           <Router history={history}>
             <NavBar></NavBar>
+            {alert.message && (
+              <Alert className="mt-2" variant={alert.type}>
+                {alert.message}
+              </Alert>
+            )}
             <Switch>
               <RouteRequiresLogin exact path="/">
                 <MainMenu />
@@ -69,6 +90,7 @@ document.body.style = "background: #334756";
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
+    alert: state.alert,
   };
 };
 

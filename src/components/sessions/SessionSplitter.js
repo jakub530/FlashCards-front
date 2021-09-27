@@ -10,7 +10,7 @@ import Row from "react-bootstrap/Row";
 import { utility } from "./utility";
 
 class SessionSplitter extends React.Component {
-  renderColors(input) {
+  renderColors = () => {
     if (!this.props.session) {
       return <div>No buckets</div>;
     }
@@ -32,7 +32,7 @@ class SessionSplitter extends React.Component {
         </Col>
       );
     });
-  }
+  };
 
   render() {
     return (
@@ -43,9 +43,7 @@ class SessionSplitter extends React.Component {
             className="d-flex justify-content-center"
             style={{ height: "50px" }}
           >
-            <Row className="w-50 align-items-center">
-              {this.renderColors(this.input)}
-            </Row>
+            <Row className="w-50 align-items-center">{this.renderColors()}</Row>
           </Container>
           <Link
             className="btn btn-primary"

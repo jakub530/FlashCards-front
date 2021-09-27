@@ -40,7 +40,7 @@ class SessionItemList extends React.Component {
         >
           Return to Session
         </Link>
-        <Table  hover className="sessionItemList">
+        <Table hover className="sessionItemList">
           <thead>
             <tr>
               <th>#</th>
@@ -52,9 +52,11 @@ class SessionItemList extends React.Component {
             </tr>
           </thead>
           <tbody>
-          {this.props.sessionCards.length !== 0
-            ? this.renderTable()
-            : <tr></tr>}
+            {this.props.sessionCards.length !== 0 ? (
+              this.renderTable()
+            ) : (
+              <tr></tr>
+            )}
           </tbody>
         </Table>
       </div>

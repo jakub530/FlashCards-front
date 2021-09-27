@@ -32,7 +32,6 @@ const register = async (email, password, name) => {
   }
 };
 
-
 export const userService = {
   login,
   logout,

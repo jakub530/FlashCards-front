@@ -5,7 +5,7 @@ class SetList extends React.Component {
   render() {
     return (
       <div>
-        <SetListForm edit delete onListUpdate={() => {}} />
+        <SetListForm noCardMessage="You don't have any sets yet" edit delete onListUpdate={() => {}} />
       </div>
     );
   }

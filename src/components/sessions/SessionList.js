@@ -1,4 +1,5 @@
 import React from "react";
+import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import { sessionService } from "../../services";
@@ -41,21 +42,38 @@ class SessionList extends React.Component {
   render() {
     return (
       <div>
-        {this.state.sessions ? (
-          <div>
-            {this.renderSession()}
-            <div className="d-grid gap-2">
+        {this.state.sessions.length === 0 ? (
+          <Card className="mt-2">
+            <Card.Header>You don't have any session yet</Card.Header>
+            <Card.Body>
               <Link
                 className="btn btn-primary"
                 type="button"
                 to="/sessions/create"
               >
-                Create a session
+                Create your first session
               </Link>
-            </div>
-          </div>
+            </Card.Body>
+          </Card>
         ) : (
-          "Loading"
+          <div>
+            {this.state.sessions ? (
+              <div>
+                {this.renderSession()}
+                <div className="d-grid gap-2">
+                  <Link
+                    className="btn btn-primary"
+                    type="button"
+                    to="/sessions/create"
+                  >
+                    Create a session
+                  </Link>
+                </div>
+              </div>
+            ) : (
+              "Loading"
+            )}
+          </div>
         )}
       </div>
     );

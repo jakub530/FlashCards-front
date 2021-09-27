@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+import Card from "react-bootstrap/Card";
+
 import SetCard from "./SetCard";
 
 import { setsActions } from "../../actions";
@@ -57,14 +59,31 @@ class SetListForm extends React.Component {
   render() {
     return (
       <div>
-        {this.props.sets ? this.renderSets() : "No sets to show"}
-        <div className="d-grid gap-2">
-          {this.state.edit && (
-            <Link className="btn btn-primary" type="button" to="/sets/create">
-              Create a set
-            </Link>
-          )}
-        </div>
+        {this.props.sets.length === 0 ? (
+          <Card className="mt-2">
+            <Card.Header>{this.props.noCardMessage}</Card.Header>
+            <Card.Body>
+              <Link className="btn btn-primary" type="button" to="/sets/create">
+                Create your first set
+              </Link>
+            </Card.Body>
+          </Card>
+        ) : (
+          <div>
+            {this.props.sets ? this.renderSets() : "No sets to show"}
+            <div className="d-grid gap-2">
+              {this.state.edit && (
+                <Link
+                  className="btn btn-primary"
+                  type="button"
+                  to="/sets/create"
+                >
+                  Create a set
+                </Link>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     );
   }
