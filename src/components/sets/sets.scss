@@ -36,12 +36,35 @@ tr.even {
   background-color: $darker;
 }
 
+span.customBadge {
+  color:white;
+  &-success {
+    background-color: $green;
+  };
+  &-danger {
+    background-color: $red;
+  };
+  &-default {
+    background-color: $secondary;
+  }
+
+}
+
 .sessionItemList {
   color: white;
 }
 
+tr.even {
+  &:hover {
+    color:#17a2b8 !important;
+  }
+}
+
 tr.odd {
   background-color: #343a40;
+  &:hover {
+    color:#17a2b8 !important;
+  }
 }
 
 .Navbar {
@@ -67,7 +90,7 @@ tr.odd {
     border-color: $green;
   }
   &.corrected {
-    border-color: $purple;
+    border-color: $green;
   }
   &.pending {
     border-color: $secondary;

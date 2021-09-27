@@ -49,7 +49,6 @@ class SessionCreate extends React.Component {
           <SetListForm  noCardMessage="You have to create a set before creating a session" onListUpdate={this.onListUpdate} />
         ) : (
           <div>
-            {this.props.allSets.length}
             <Card className="mt-3" style={{ backgroundColor: "#505C70" }}>
               <Card.Title
                 className="text-center mt-3 py-2 mx-3 font-size:40px"

@@ -3,6 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import Carousel from "react-bootstrap/Carousel";
+import Badge from 'react-bootstrap/Badge'
 
 import { alertActions, sessionActions } from "../../actions";
 import SessionCarouselItem from "./SessionCarouselItem";
@@ -10,11 +11,29 @@ import SessionCarouselItem from "./SessionCarouselItem";
 class SessionMain extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { activeIndex: 0, userInput: "" };
+    this.state = { activeIndex: 0, userInput: "", cardState:{type:"", message:""} };
   }
 
   componentDidMount() {
     this.setState({ activeIndex: this.props.previousCards.length });
+    this.updateBadge()
+  }
+
+
+
+  updateBadge() {
+    if(this.props.itemFlag==="pending")
+    {
+      this.setState({cardState:{type:"default",message:"Type Your Answer"}})
+    }
+    else if(this.props.itemFlag==="correct" || this.props.itemFlag==="corrected")
+    {
+      this.setState({cardState:{type:"success",message:"Correct Answer"}})
+    }
+    else
+    {
+      this.setState({cardState:{type:"danger",message:"Incorrect Answer"}})
+    }
   }
 
   renderPreviousItems() {
@@ -25,7 +44,7 @@ class SessionMain extends React.Component {
             term={card.term}
             definition={card.definition}
             status="history"
-            heading="History"
+            heading={<div>History</div>}
             onChange={() => {}}
             userInput=""
             onSubmit={() => {}}
@@ -40,27 +59,35 @@ class SessionMain extends React.Component {
     await this.props.evolveSession(id, update);
   };
 
+  renderBadge = () => {
+    return (
+    <Badge className={`customBadge-${this.state.cardState.type}`}>
+      {this.state.cardState.message}
+    </Badge>);
+  }
+
   submitCard = async () => {
     if (this.props.itemFlag === "pending" || this.props.itemFlag === "false") {
       if (this.state.userInput === this.props.currentCard.definition) {
-        this.evolveSession("correct");
-        this.props.alertSuccess("Correct Answer");
+        await this.evolveSession("correct");
+        // this.props.alertCardSuccess("Correct Answer");
       } else if (this.state.userInput === "") {
       } else {
-        this.evolveSession("false");
-        this.props.alertError("Incorrect Answer");
+        await this.evolveSession("false");
+        // this.props.alertCardError("Wrong Answer");
       }
     } else if (
       this.props.itemFlag === "correct" ||
       this.props.itemFlag === "corrected"
     ) {
       await this.evolveSession("next");
-      this.props.alertClear();
+      // this.props.alertCardClear();
       this.setState({
         activeIndex: this.props.previousCards.length,
         userInput: "",
       });
     }
+    this.updateBadge();
     this.setState({ userInput: "" });
   };
 
@@ -72,7 +99,7 @@ class SessionMain extends React.Component {
           definition={this.props.currentCard.definition}
           status={this.props.itemFlag}
           onSubmit={this.handleSubmit}
-          heading="Type Your Answer"
+          heading={this.renderBadge()}
           userInput={this.state.userInput}
           onChange={this.updateItem}
         ></SessionCarouselItem>
@@ -144,12 +171,13 @@ const mapStateToProps = (state) => {
     currentCard: state.session.cards.currentCard,
     previousCards: state.session.cards.previousCards,
     id: state.session.session._id,
+    alertCard: state.alertCard,
   };
 };
 
 export default connect(mapStateToProps, {
   evolveSession: sessionActions.evolveSession,
-  alertSuccess: alertActions.success,
-  alertError: alertActions.error,
-  alertClear: alertActions.clear,
+  alertCardSuccess: alertActions.cardCorrect,
+  alertCardError: alertActions.cardWrong,
+  alertCardClear: alertActions.cardClear,
 })(SessionMain);
