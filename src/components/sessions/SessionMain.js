@@ -3,6 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import Carousel from "react-bootstrap/Carousel";
+import Card from "react-bootstrap/Card";
 import Badge from 'react-bootstrap/Badge'
 
 import { alertActions, sessionActions } from "../../actions";
@@ -142,17 +143,29 @@ class SessionMain extends React.Component {
 
   render() {
     return (
-      <Carousel
-        wrap={false}
-        interval={null}
-        slide={false}
-        activeIndex={this.state.activeIndex}
-        onSelect={this.handleSelect}
-      >
-        {this.renderPreviousItems()}
-        {this.renderCurrentItem()}
-        {this.mockNextItem()}
-      </Carousel>
+      <div>
+        {this.props.noItems ? 
+        <Card bg="success" className="success">
+          <Card.Header className="success">
+            Congratulations
+          </Card.Header>
+          <Card.Body>
+            You have completed the session
+          </Card.Body>
+        </Card> : 
+        <Carousel
+          wrap={false}
+          interval={null}
+          slide={false}
+          activeIndex={this.state.activeIndex}
+          onSelect={this.handleSelect}
+        >
+          {this.renderPreviousItems()}
+          {this.renderCurrentItem()}
+          {this.mockNextItem()}
+        </Carousel>
+        }
+      </div>
     );
   }
 }
@@ -168,6 +181,7 @@ const mapStateToProps = (state) => {
   }
   return {
     itemFlag: state.session.session.state.itemFlag,
+    noItems: state.session.session.state.noItems,
     currentCard: state.session.cards.currentCard,
     previousCards: state.session.cards.previousCards,
     id: state.session.session._id,

@@ -120,6 +120,11 @@ tr.odd {
 .card-header {
   background-color: $dark;
 
+  &.success {
+    background-color:$green;
+    filter: brightness(90%);
+  }
+
   &.selected-card {
     background-color: $light;
   }
