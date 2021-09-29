@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import history from "../../history";
 
 import { userActions } from "../../actions";
+import {alertActions} from "../../actions"
 
 class Login extends React.Component {
   constructor(props) {
@@ -33,9 +34,17 @@ class Login extends React.Component {
     const { email, password } = this.state;
     const { dispatch } = this.props;
     if (email && password) {
-      await dispatch(userActions.login(email, password));
-      if (!this.props.noRedirect) {
-        history.push("/");
+      const response = await dispatch(userActions.login(email, password));
+
+      if( response.user )
+      {
+        if (!this.props.noRedirect) {
+          history.push("/");
+        }
+      }
+      else
+      {
+        dispatch(alertActions.error("Wrong email or password"));
       }
     }
   };

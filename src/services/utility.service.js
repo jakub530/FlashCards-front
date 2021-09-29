@@ -1,7 +1,7 @@
 import { authToken } from "../utility";
 import { connect } from "../api/flashcards";
 
-const handleRequest = async (endpoint, request_type, payload = null) => {
+const handleRequest = async (endpoint, request_type, payload = null, token = true) => {
   let response;
   if (process.env.NODE_ENV === "development") {
     console.log("Sending Request");
@@ -9,10 +9,16 @@ const handleRequest = async (endpoint, request_type, payload = null) => {
     console.log("Request Type:", request_type);
     console.log("Payload:", payload);
   }
-  if (authToken().Authorization) {
-    const config = {
-      headers: { Authorization: authToken().Authorization },
-    };
+  if (authToken().Authorization || !token) {
+    let config
+    if(token) {
+      config = {
+        headers: { Authorization: authToken().Authorization },
+      };
+    } else {
+      config = null;
+    }
+
     try {
       switch (request_type) {
         case "get":
@@ -34,9 +40,9 @@ const handleRequest = async (endpoint, request_type, payload = null) => {
         console.log("Received Response:", response);
       }
       return response.data;
-    } catch {
-      console.log(response);
-      return null;
+    } catch (error) {
+      console.log("Caught error", error);
+      return error;
     }
   } else {
     console.log("You are not logged in");

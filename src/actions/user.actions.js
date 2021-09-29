@@ -9,11 +9,13 @@ const login = (email, password) => async (dispatch) => {
 
   if (user) {
     dispatch({ type: userConstants.LOGIN_SUCCESS, user });
+    return {user, error:null};
   } else {
     dispatch({
       type: userConstants.LOGIN_FAILURE,
       error: error,
     });
+    return {user: null, error};
   }
 };
 

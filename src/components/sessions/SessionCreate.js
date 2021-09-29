@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import history from "../../history";
-import { sessionActions, setsActions } from "../../actions";
+import { alertActions, sessionActions, setsActions } from "../../actions";
 import Form from "react-bootstrap/Form";
 
 class SessionCreate extends React.Component {
@@ -27,6 +27,14 @@ class SessionCreate extends React.Component {
   };
 
   createSession = async () => {
+    if(!this.state.name)
+    {
+      return this.props.alert("Please add session name")
+    }
+    if(this.state.sets.selected.length === 0)
+    {
+      return this.props.alert("Session requires at least one set")
+    }
     const session = await this.props.createSession({
       sets: this.state.sets.selected,
       session: { name: this.state.name, description: this.state.description },
@@ -112,6 +120,6 @@ const mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps, { createSession: sessionActions.createSession, fetchSets: setsActions.listSets })(
+export default connect(mapStateToProps, { createSession: sessionActions.createSession, fetchSets: setsActions.listSets, alert: alertActions.error })(
   SessionCreate
 );

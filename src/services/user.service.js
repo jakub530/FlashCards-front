@@ -1,11 +1,13 @@
-import { connect } from "../api/flashcards";
+import { utilityService } from "./utility.service";
 
 const login = async (email, password) => {
-  const response = await connect.post("/users/login", { email, password });
+  const response = await utilityService.handleRequest(`/users/login`, "post", {
+    email, password
+  }, false);
 
-  if (response.data.user) {
-    let user = response.data.user;
-    user.token = response.data.token;
+  if (response.user) {
+    let user = response.user;
+    user.token = response.token;
     localStorage.setItem("user", JSON.stringify(user));
     return { user, error: null };
   } else {
@@ -20,15 +22,17 @@ const logout = () => {
 
 const register = async (email, password, name) => {
   // remove user from local storage to log user out
-  const response = await connect.post("/users", { email, password, name });
+  const response = await utilityService.handleRequest(`/users`, "post", {
+    email, password, name
+  }, false);
 
-  if (response.data.user) {
-    let user = response.data.user;
-    user.token = response.data.token;
+  if (response.user) {
+    let user = response.user;
+    user.token = response.token;
     localStorage.setItem("user", JSON.stringify(user));
     return { user, error: null };
   } else {
-    return { error: "Unable to log in", user: null };
+    return { error: "Unable to register", user: null };
   }
 };
 

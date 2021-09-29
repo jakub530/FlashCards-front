@@ -4,6 +4,8 @@ import TermCard from "./TermCard";
 import Header from "./Header";
 import { Form } from "react-final-form";
 import { setService } from "../../services";
+import { connect } from "react-redux";
+import { alertActions } from "../../actions";
 import Button from "react-bootstrap/Button";
 import ObjectID from "bson-objectid";
 
@@ -74,6 +76,15 @@ class SetForm extends React.Component {
     const cards = this.processCards(formValues);
     const set = formValues.set;
     const id = this.props.id;
+    console.log("Srt:", set)
+    if (!set.title)
+    {
+      return this.props.dispatch(alertActions.error("Please enter a set title"));
+    }
+    if(cards.length === 0)
+    {
+      return this.props.dispatch(alertActions.error("Set needs to have at least one card"));
+    }
     if (this.props.submit === "patch") {
       await setService.patchSet(id, set, cards);
     } else {
@@ -168,4 +179,4 @@ class SetForm extends React.Component {
   }
 }
 
-export default SetForm;
+export default  connect()(SetForm);

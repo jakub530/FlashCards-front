@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 
 import { userActions } from "../../actions";
+import {alertActions} from "../../actions"
 
 class Register extends React.Component {
   constructor(props) {
@@ -30,8 +31,22 @@ class Register extends React.Component {
     this.setState({ submitted: true });
     const { email, password, userName } = this.state;
     const { dispatch } = this.props;
+    if(password.length < 8)
+    {
+      dispatch(alertActions.error("Password needs to have at least 8 characters"));
+      return;
+    }
+    
     if (email && password && userName) {
-      dispatch(userActions.register(email, password, userName));
+      const response = dispatch(userActions.register(email, password, userName));
+
+      if( response.user )
+      {
+      }
+      else
+      {
+        dispatch(alertActions.error("Email is already in use"));
+      }
     }
   };
 
