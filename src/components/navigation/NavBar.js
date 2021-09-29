@@ -56,7 +56,7 @@ class NavBar extends React.Component {
                 alt="logo"
                 style={{ width: "40px" }}
               />
-              {"  "}FlashCards - {process.env.NODE_ENV === "development" ? "dev" : ""}
+              {"  "}FlashCards{process.env.NODE_ENV === "development" ? " - dev" : ""}
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
