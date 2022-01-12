@@ -39,14 +39,6 @@ class Register extends React.Component {
     
     if (email && password && userName) {
       const response = dispatch(userActions.register(email, password, userName));
-
-      if( response.user )
-      {
-      }
-      else
-      {
-        dispatch(alertActions.error("Email is already in use"));
-      }
     }
   };
 
