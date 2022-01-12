@@ -1,16 +1,37 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# FlashCard Documentation
 
 ## How to use website step by step
 
-### 1.Register
+### 1. Register
 
-### 2.Create a new set
+* Head to [registration page](https://flashcards-jj.com/register)
+* Type in username (doesn't have to be unique), an email and password.
 
-### 3.Create a new session
+* Email has to be unique and password has to be at least 8 characters long.
+
+* After registration you will be redirected to main page of website.
+
+### 2. Create a new set
+
+* From main page you can navigate to the [Learning Set](https://flashcards-jj.com/sets) section. There you can click on create set button at the bottom of the screen. 
+
+* Now on the set edit page enter the title of the set and optionally a description.
+
+* In the bottom section you can add individual flashcards. During practice session "Term" will be visible and your task will be typing in corresponding definition.
+
+* In order to add more cards click "Add Term" button at the bottom of the screen. If you want to delete card click trash icon on the top right corner of given card.
+
+* After you finish adding flashcards click Save button in the bottom right corner of the page.
+
+### 3. Create a new session
+
+### 4. Practicing
+
+## Technical Documentation
 
 ## Available Scripts
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, you can run:
 
