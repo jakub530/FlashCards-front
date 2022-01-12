@@ -38,7 +38,7 @@ class Register extends React.Component {
     }
     
     if (email && password && userName) {
-      const response = dispatch(userActions.register(email, password, userName));
+      dispatch(userActions.register(email, password, userName));
     }
   };
 
