@@ -1,5 +1,3 @@
-# FlashCard Documentation
-
 ## How to use website step by step
 
 ### 1. Register
@@ -31,11 +29,39 @@
 
 * Finally click "Create Session" button at the bottom of the screen. This will redirect you to page, where you can start practicing your session.
 
-### 4. Practicing
+### 4. Learning Loop
 
+* Once in session there are two sections. Top section contains session progress and bottom section shows current card.
 
+* Each colored bar in top section indicates the bucket that flash card has to go through. Highlighted bar indicates the stage that current card originated from.
+
+![image](https://user-images.githubusercontent.com/19439874/149222494-d07d9882-912e-40a0-9344-7ae4e2b832a4.png)
+
+* View cards lets you see all cards in current session and the progress you have made so far. 
+
+* In the bottom section you can see term and place for you to type in definition.
+
+* If you guess correctly border will change its color into green and you will be able to go to the next flashcard. Correctly guessed flash cards will advance to the next bucket.
+
+![image](https://user-images.githubusercontent.com/19439874/149223234-66262f8c-0250-4c87-92cb-22780e2ed499.png)
+
+* If you guess incorrectly definition will be shown as placeholder and you will have to type it in. Only once you type it in correctly will you be able to advance to next flash card. Incorrectly guessed flash cards will be moved into lower bucket
+
+![image](https://user-images.githubusercontent.com/19439874/149223378-09145649-0f7b-4df6-a81a-067b82fbbd70.png)
 
 ## Technical Documentation
+
+## Styling
+
+For styling I have decided to make use of react-bootstrap, which sped up development of the project significantly. 
+
+### Use of Redux
+
+Website uses redux mainly in order to manage user authentication. In addition it uses redux in order to manage some of the requests to the back end. 
+
+### Hosting
+
+The website is currently hosted on netlify at free tier of the service and due to that has some limitations, especially when it comes to scaliability. In order to get the best performance possible out of the setup, frontend, backend and database are all hosted on European servers minimising latency. 
 
 ## Available Scripts
 
@@ -50,11 +76,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
