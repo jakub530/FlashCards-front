@@ -25,7 +25,15 @@
 
 ### 3. Create a new session
 
+* Navigate to the [Session Section](https://flashcards-jj.com/sessions) and click "Create a session" button at the bottom of the screen.
+
+* Add a title and optionally a description of the session. From the list of available sets select ones you want to add by clicking on white square next to the set title.
+
+* Finally click "Create Session" button at the bottom of the screen. This will redirect you to page, where you can start practicing your session.
+
 ### 4. Practicing
+
+
 
 ## Technical Documentation
 
