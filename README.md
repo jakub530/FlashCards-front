@@ -51,7 +51,7 @@
 
 ## Technical Documentation
 
-## Styling
+### Styling
 
 For styling I have decided to make use of react-bootstrap, which sped up development of the project significantly. 
 
