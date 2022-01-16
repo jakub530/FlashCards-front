@@ -1,7 +1,7 @@
 ## Introduction
 
 This repository contains a frontend code of the https://flashcards-jj.com.
-It is a website designed to assist with learning, especially language learning via the use of flashcards.
+It is a website designed enchance learning expierience, especially for learning languages via the use of flashcards.
 
 ## How to use the website step by step
 
