@@ -14,6 +14,8 @@ It is a website designed enchance learning expierience, especially for learning 
 
 * After registration, you will be redirected to the main page of the website.
 
+[![Image from Gyazo](https://i.gyazo.com/c5be057f91f2e07149992b4807bec5a0.gif)](https://gyazo.com/c5be057f91f2e07149992b4807bec5a0)
+
 ### 2. Create a new set
 
 * From the main page, you can navigate to the [Learning Set](https://flashcards-jj.com/sets) section. There you can click on create set button at the bottom of the screen. 
@@ -26,6 +28,8 @@ It is a website designed enchance learning expierience, especially for learning 
 
 * After you finish adding flashcards click the Save button in the bottom right corner of the page.
 
+[![Image from Gyazo](https://i.gyazo.com/895591410883b4eea3d3bfea9ac4c374.gif)](https://gyazo.com/895591410883b4eea3d3bfea9ac4c374)
+
 ### 3. Create a new session
 
 * Navigate to the [Session Section](https://flashcards-jj.com/sessions) and click the "Create a session" button at the bottom of the screen.
@@ -33,6 +37,8 @@ It is a website designed enchance learning expierience, especially for learning 
 * Add a title and optionally a description of the session. From the list of available sets select ones, you want to add by clicking on the white square next to the set title.
 
 * Finally click the "Create Session" button at the bottom of the screen. This will redirect you to the page, where you can start practising your session.
+
+[![Image from Gyazo](https://i.gyazo.com/7b5674ca3936527578b7ce9d07756e08.gif)](https://gyazo.com/7b5674ca3936527578b7ce9d07756e08)
 
 ### 4. Learning Loop
 
@@ -53,6 +59,8 @@ It is a website designed enchance learning expierience, especially for learning 
 * If you guess incorrectly definition will be shown as a placeholder and you will have to type it in. Only once you type it incorrectly will you be able to advance to the next flashcard. Incorrectly guessed flashcards will be moved into the lower bucket
 
 ![image](https://user-images.githubusercontent.com/19439874/149223378-09145649-0f7b-4df6-a81a-067b82fbbd70.png)
+
+[![Image from Gyazo](https://i.gyazo.com/4d2578389cd125e8ffbd6c8449ded60c.gif)](https://gyazo.com/4d2578389cd125e8ffbd6c8449ded60c)
 
 ## Technical Documentation
 
